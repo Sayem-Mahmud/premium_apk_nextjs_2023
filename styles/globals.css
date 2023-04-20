@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #CBE4DE;
+  position: relative;
+}
+
+.container-x {
+  max-width: 1440px !important;
+  width: 100%;
+  background-color: #FEFEFE;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Search bar styles*/
+
+.search {
+  max-width: 1440px !important;
+  width: 100%;
+  margin: 1rem auto;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchInputs {
+  position: relative;
+}
+
+.searchInputs input {
+  background-color: white;
+  border: 0;
+  border-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 18px;
+  padding: 15px;
+  width: 300px;
+}
+
+.searchIcon {
+  position: absolute;
+  inset: 0;
+  left: 16rem;
+  top: 1rem;
+  transition: all 0.3s ease-out;
+}
+
+input:focus {
+  outline: none;
+}
+
+.searchIcon svg {
+  font-size: 35px;
+}
+
+.dataResult {
+  margin-top: 5px;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.dataResult::-webkit-scrollbar {
+  display: none;
+}
+
+.dataResult .dataItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.dataItem p {
+  margin-left: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: lightgrey;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+/* Search bar styles*/
+
+/* React Pagination Styles */
+.paginationContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.pageNumber {
+  border: 1px solid #cccccc;
+  color: #404040;
+  padding: 8px 15px;
+  margin: 0 2px 5px 2px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.pageNumber:hover {
+  background-color: #232428;
+  color: #FEFEFE;
+  transition: all 0.2s ease;
+}
+
+.active {
+  background-color: #232428;
+  color: #FEFEFE;
+}
+
+.disable {
+  display: none;
+}
+
+/* li.break {
+  border: 1px solid #cccccc;
+  color: #404040;
+  padding: 8px 15px;
+  margin: 0 2px 5px 2px;
+  border-radius: 5px;
+}
+
+li.break::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+} */
+
+/* React Pagination Styles */
+
+
+
+
+/* @media (min-width: 768px) {
+  .container-x {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+} */
