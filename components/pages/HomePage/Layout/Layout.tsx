@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux'
 import { controller } from '../../../../src/state/StateController'
 import LeftLayout from './LeftLayout/LeftLayout'
 import RightLayout from './RightLayout/RightLayout'
+import { ApkData } from '../../../../interfaces/models'
 
 interface Props {
-    sourceCodes: Array<any>
+    sourceCodes: Array<ApkData>
 }
 
 const Layout: React.FC<Props> = ({ sourceCodes }) => {

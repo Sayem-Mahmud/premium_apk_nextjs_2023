@@ -1,3 +1,5 @@
+import { IResponseApk, IResponseSingleApk } from "../../interfaces/response";
+import { callFetch } from "../utils/CallFetch";
 
 
 export const API_ENDPOINT = process.env["NEXT_PUBLIC_API_ENDPOINT"];
@@ -9,7 +11,7 @@ export interface LoginInterface {
   };
 }
 
-export class PremiumSourceCodeApi {
+export class PremiumApkApi {
 
   //DEMO API CALLING STRUCTURE
   // static async login(token: string, email: string, fullName: string, avatar: string, tokenType: "google" | "facebook"): Promise<ILoginResponse> {
@@ -32,6 +34,28 @@ export class PremiumSourceCodeApi {
 
   //     return await callFetch(`${API_ENDPOINT}/users/login`, requestOptions)
   // }
+
+
+  static async getAllApk(): Promise<IResponseApk> {
+
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    return await callFetch(`${API_ENDPOINT}/apks/findAllApk`, requestOptions)
+  }
+
+  static async getSingleApk(id: any): Promise<IResponseSingleApk> {
+    console.log("🚀 ~ file: PremiumSourceCodeApi.ts:49 ~ PremiumSourceCodeApi ~ getSingleApk ~ id:", id)
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    return await callFetch(`${API_ENDPOINT}/apks/findOneApk/${id}`, requestOptions)
+  }
+
 
 
 
