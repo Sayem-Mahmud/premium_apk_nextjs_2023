@@ -21,7 +21,7 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
     const handlePageClick = (event: any) => {
         // const newOffset = (event.selected * states.itemsPerPage) % sourceCodes.length;
         // setItemOffset(newOffset);
-        window.location.href = `http://localhost:3000/page/${event.selected+1}`;
+        window.location.href = `/page/${event.selected+1}`;
     };
 
     useEffect(() => {
