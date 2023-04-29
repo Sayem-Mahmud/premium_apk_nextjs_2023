@@ -11,7 +11,10 @@ export interface IResponseUser extends User {
 
 
 export interface IResponseApk extends MyFetchInterface {
-  res: Array<ApkData>
+  res: {
+    apkAllData: Array<ApkData>
+    apkAllDataLength: number
+  }
 }
 export interface IResponseSingleApk extends MyFetchInterface {
   res: ApkData

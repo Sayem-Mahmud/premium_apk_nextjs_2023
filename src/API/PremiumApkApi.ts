@@ -36,14 +36,14 @@ export class PremiumApkApi {
   // }
 
 
-  static async getAllApk(): Promise<IResponseApk> {
+  static async getAllApk(pageNumber:number): Promise<IResponseApk> {
 
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
 
-    return await callFetch(`${API_ENDPOINT}/apks/findAllApk`, requestOptions)
+    return await callFetch(`${API_ENDPOINT}/apks/findAllApk?page=${pageNumber}`, requestOptions)
   }
 
   static async getSingleApk(id: any): Promise<IResponseSingleApk> {

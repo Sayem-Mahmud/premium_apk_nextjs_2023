@@ -11,28 +11,30 @@ interface Props {
 const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
 
 
-    const [itemOffset, setItemOffset] = useState(0);
+    // const [itemOffset, setItemOffset] = useState(0);
 
     const states = useSelector(() => controller.states)
-
-    const endOffset = itemOffset + states.itemsPerPage;
-    const currentSourceCodes = sourceCodes.slice(itemOffset, endOffset);
-    const pageCount = Math.ceil(sourceCodes.length / states.itemsPerPage);
+    // const endOffset = itemOffset + states.itemsPerPage;
+    // const currentSourceCodes = sourceCodes.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(states.totalApk / states.itemsPerPage);
 
     const handlePageClick = (event: any) => {
-        const newOffset = (event.selected * states.itemsPerPage) % sourceCodes.length;
-        setItemOffset(newOffset);
+        // const newOffset = (event.selected * states.itemsPerPage) % sourceCodes.length;
+        // setItemOffset(newOffset);
+        window.location.href = `http://localhost:3000/page/${event.selected+1}`;
     };
 
-
+    useEffect(() => {
+    
+    },[states.currentPage])
 
 
     return (
         <div className='sm:w-full md:w-[80%] p-3'>
-            {currentSourceCodes ? <>
+            {sourceCodes ? <>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-7 gap-y-10 md:gap-y-10'>
                     {
-                        currentSourceCodes.map((item) => {
+                        sourceCodes.map((item) => {
                             return (
                                 <>
                                     <BigSourceCodeCard item={item} />
@@ -55,6 +57,7 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
                         pageCount={pageCount}
                         previousLabel={'Prev'}
                         nextLabel={'Next'}
+                        forcePage={states.currentPage -1}
                         containerClassName={'paginationContainer'}
                         pageLinkClassName={'pageNumber'}
                         previousLinkClassName={'pageNumber'}

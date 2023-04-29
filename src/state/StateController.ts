@@ -15,7 +15,8 @@ export interface IStates {
     currentPage: number,
     itemsPerPage: number,
     seconds: number,
-    showData: boolean
+    showData: boolean,
+    totalApk:number
 }
 
 export class Controller {
@@ -24,7 +25,8 @@ export class Controller {
         currentPage: 1,
         itemsPerPage: 4,
         seconds: 10,
-        showData: false
+        showData: false,
+        totalApk:0
     }
 
     @action

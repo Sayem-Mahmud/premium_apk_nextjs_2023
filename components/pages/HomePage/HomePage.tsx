@@ -18,30 +18,34 @@ const HomePage: React.FC<Props> = () => {
     const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
     const router = useRouter();
     const { page } = router.query;
-    // if (!page) {
-    //     return
-    // }
+   
     
 
-    const fetchCodeData = async () => {
-        console.log('page',page)
-        const { res, err } = await PremiumApkApi.getAllApk();
+    const fetchCodeData = async (pageNumber:number) => {
+        console.log('page',pageNumber)
+        const { res, err } = await PremiumApkApi.getAllApk(pageNumber);
         if (err) {
             console.log(err);
         }
         //@ts-ignore
-        setSourceCodes(res)
+        setSourceCodes(res.apkAllData)
+        states.totalApk = res.apkAllDataLength
+        states.currentPage=1
     }
     useEffect(() => {
-        fetchCodeData()
+            fetchCodeData(1)
     }, [])
 
     return <>
-        <Header />
+        {sourceCodes.length > 0 && <div>
+             <Header />
         <Search sourceCodes={sourceCodes} />
         <Layout
             sourceCodes={sourceCodes}
         />
+        </div>}
+       
+        
     </>
 }
 
