@@ -29,7 +29,7 @@ const Header: React.FC<Props> = (props) => {
             <div className='flex items-center justify-between py-10 container-x shadow-md'>
                 <div className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins]text-gray-800'>
                     <Link href="/" className='text-3xl text-pscblack mr-1 hover:bg-transparent'>
-                        Premium Source Codes
+                       APK DOWNLOAD
                     </Link>
 
                 </div>

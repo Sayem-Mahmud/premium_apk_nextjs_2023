@@ -1,5 +1,6 @@
 import { state, action, createStore } from 'usm-redux';
 import { compose } from 'redux';
+import { ApkData } from '../../interfaces/models';
 
 
 const composeEnhancers =
@@ -16,7 +17,9 @@ export interface IStates {
     itemsPerPage: number,
     seconds: number,
     showData: boolean,
-    totalApk:number
+    totalApk: number,
+    sourceCode: Array<ApkData>,
+    searchValue:string
 }
 
 export class Controller {
@@ -26,7 +29,9 @@ export class Controller {
         itemsPerPage: 4,
         seconds: 10,
         showData: false,
-        totalApk:0
+        totalApk: 0,
+        sourceCode: [],
+        searchValue:''
     }
 
     @action

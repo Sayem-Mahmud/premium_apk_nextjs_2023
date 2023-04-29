@@ -1,4 +1,4 @@
-import { IResponseApk, IResponseSingleApk } from "../../interfaces/response";
+import { IResponseApk, IResponseApkSearch, IResponseSingleApk } from "../../interfaces/response";
 import { callFetch } from "../utils/CallFetch";
 
 
@@ -56,6 +56,15 @@ export class PremiumApkApi {
     return await callFetch(`${API_ENDPOINT}/apks/findOneApk/${id}`, requestOptions)
   }
 
+  static async getAllApkSearch(search: string,page:number): Promise<IResponseApkSearch> {
+    console.log("🚀 ~ file: PremiumSourceCodeApi.ts:49 ~ PremiumSourceCodeApi ~ getSingleApk ~ id:", search)
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    return await callFetch(`${API_ENDPOINT}/apks/findAllApkSearch/?search=${search}&page=${page}`, requestOptions)
+  }
 
 
 

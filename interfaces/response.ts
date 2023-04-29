@@ -19,3 +19,9 @@ export interface IResponseApk extends MyFetchInterface {
 export interface IResponseSingleApk extends MyFetchInterface {
   res: ApkData
 }
+export interface IResponseApkSearch extends MyFetchInterface {
+  res: {
+    apkAllDataSearch: Array<ApkData>
+    apkAllDataLengthSearch: number
+  }
+}

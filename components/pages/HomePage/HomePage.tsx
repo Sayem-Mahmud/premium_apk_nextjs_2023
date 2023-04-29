@@ -17,7 +17,7 @@ const HomePage: React.FC<Props> = () => {
     const states = useSelector(() => controller.states)
     const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
     const router = useRouter();
-    const { page } = router.query;
+    // const { page } = router.query;
    
     
 
@@ -28,6 +28,7 @@ const HomePage: React.FC<Props> = () => {
             console.log(err);
         }
         //@ts-ignore
+        states.sourceCode=res.apkAllData
         setSourceCodes(res.apkAllData)
         states.totalApk = res.apkAllDataLength
         states.currentPage=1
@@ -39,7 +40,8 @@ const HomePage: React.FC<Props> = () => {
     return <>
         {sourceCodes.length > 0 && <div>
              <Header />
-        <Search sourceCodes={sourceCodes} />
+            <Search
+                sourceCodes={sourceCodes} />
         <Layout
             sourceCodes={sourceCodes}
         />

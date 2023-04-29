@@ -4,6 +4,7 @@ import { controller } from '../../src/state/StateController'
 import SvgIconRenderer from '../helpers/SvgIconRenderer'
 import { SvgPaths } from '../../src/utils/SvgPaths'
 import Link from 'next/link'
+import { PremiumApkApi } from '../../src/API/PremiumApkApi'
 
 interface Props {
     sourceCodes?: Array<any>
@@ -19,25 +20,32 @@ const Search: React.FC<Props> = ({ sourceCodes }) => {
     const handleFilter = (event: any) => {
         const searchWord = event.target.value;
         setWordEntered(searchWord);
-        const newFilter = sourceCodes?.filter((value) => {
-            return value.title.toLowerCase().includes(searchWord.toLowerCase());
-        });
+        // const newFilter = sourceCodes?.filter((value) => {
+        //     return value.title.toLowerCase().includes(searchWord.toLowerCase());
+        // });
 
-        if (searchWord === "") {
-            setFilteredData([]);
-        } else {
-            setFilteredData(newFilter!!);
+        // if (searchWord === "") {
+        //     setFilteredData([]);
+        // } else {
+        //     setFilteredData(newFilter!!);
+        // }
+    };
+    const handleSubmit = async(e:any) => {
+        const valueNumber = e.target.value;
+        if (e.key === "Enter") {
+            window.location.href = `/search/${wordEntered}`;
         }
     };
+
 
     const clearInput = () => {
         setFilteredData([]);
         setWordEntered("");
     };
 
-    const offOverlay = () => {
-        setFilteredData([])
-    }
+    // const offOverlay = () => {
+    //     setFilteredData([])
+    // }
     return (
         <div className="search">
             <div className='relative'>
@@ -48,6 +56,7 @@ const Search: React.FC<Props> = ({ sourceCodes }) => {
                             placeholder="Search"
                             value={wordEntered}
                             onChange={handleFilter}
+                            onKeyUp={handleSubmit}
                         />
                     </div>
                     <div className="searchIcon">
@@ -77,7 +86,7 @@ const Search: React.FC<Props> = ({ sourceCodes }) => {
                     </div>
 
                 </div>
-                <div className='absolute inset-0 top-[3.4rem] z-20 rounded-sm'>
+                {/* <div className='absolute inset-0 top-[3.4rem] z-20 rounded-sm'>
                     {filteredData?.length != 0 && (
                         <div className="dataResult">
                             {filteredData.slice(0, 15).map((item, key) => {
@@ -97,7 +106,7 @@ const Search: React.FC<Props> = ({ sourceCodes }) => {
                             onClick={() => { offOverlay() }}
                         />
                     )
-                }
+                } */}
 
             </div>
         </div>

@@ -21,7 +21,16 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
     const handlePageClick = (event: any) => {
         // const newOffset = (event.selected * states.itemsPerPage) % sourceCodes.length;
         // setItemOffset(newOffset);
-        window.location.href = `/page/${event.selected+1}`;
+           // const allApkSearch = await PremiumApkApi.getAllApkSearch(wordEntered)
+           const url = window.location.href;
+
+        if (url.includes('search')) {
+            console.log('kkk');
+            window.location.href = `/page/${event.selected + 1}/search/${states.searchValue}`;
+        }
+        else {
+            window.location.href = `/page/${event.selected + 1}`;
+        }
     };
 
     useEffect(() => {
@@ -31,7 +40,9 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
 
     return (
         <div className='sm:w-full md:w-[80%] p-3'>
-            {sourceCodes ? <>
+            {
+                sourceCodes
+                    ? <>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-7 gap-y-10 md:gap-y-10'>
                     {
                         sourceCodes.map((item) => {
