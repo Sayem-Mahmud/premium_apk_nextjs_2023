@@ -10,10 +10,7 @@ export default function FourOhFour() {
       </a>
     </Link> */}
     <Script>
-      {
-        `document.location.href='/';
-        `
-      }
+     document.location.href='/'
     </Script>
   </>
 }
