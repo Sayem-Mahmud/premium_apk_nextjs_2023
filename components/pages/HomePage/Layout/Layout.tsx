@@ -15,10 +15,12 @@ const Layout: React.FC<Props> = ({ sourceCodes }) => {
 
     return (
         <div className='my-5'>
-            <div className="flex gap-5 container-x">
+            <div className="flex flex-col md:flex-row md:gap-x-[1rem] gap-y-3 container-x">
+                <div className='w-full md:w-[75%] p-1'>
                 <LeftLayout
                     sourceCodes={sourceCodes}
-                />
+                    />
+                    </div>
                 <RightLayout />
             </div>
         </div>

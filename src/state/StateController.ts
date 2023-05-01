@@ -19,7 +19,10 @@ export interface IStates {
     showData: boolean,
     totalApk: number,
     sourceCode: Array<ApkData>,
-    searchValue:string
+    searchValue: string,
+    catSubValue: Array<any>,
+    categoryValue: string,
+    open: boolean
 }
 
 export class Controller {
@@ -31,7 +34,10 @@ export class Controller {
         showData: false,
         totalApk: 0,
         sourceCode: [],
-        searchValue:''
+        searchValue: '',
+        catSubValue: [],
+        categoryValue: '',
+        open: false
     }
 
     @action

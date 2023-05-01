@@ -14,27 +14,32 @@ const BigSourceCodeCard: React.FC<Props> = ({ item }) => {
 
     return (
         <>
-            <Link href={`/sourceCode/${item._id}`} className="hover:bg-transparent">
-                <div className="flex flex-col gap-y-4 shadow-lg rounded"
-                >
-                    <div className='overflow-hidden cursor-pointer rounded'>
-                        <img src={item.imgSrc} alt="" className='bg-gray-400 w-full h-[280px] object-cover scale-[1] hover:scale-[1.3] transition-all duration-300' />
-                    </div>
-                    <div className='px-4 py-2'>
-                        <div className='flex gap-x-3'>
-                            <span className="text-[13px] text-[#00AD7F] font-medium">{item.categories}</span>
-                            <span className="text-[13px] text-[#8F8F8F]">{item.createdAt}</span>
+            {item.title &&
+                <Link href={`/sourceCode/${item._id}`} className="hover:bg-transparent">
+                    <div className=" rounded mt-[20px] bg-[#f9f9f9] flex md:pl-[5px]"
+                    >
+                        <div className='flex flex-col md:flex-row gap-y-4' style={{columnGap:'25px', padding:'0px 20px'}}>
+                        <div className='overflow-hidden cursor-pointer rounded w-[100%] md:w-[20%]'>
+                            <img src={item.imgSrc} alt="" className='mx-auto my-[10px] bg-gray-400 w-[90%] md:w-52 object-cover scale-[1] hover:scale-[1.3] transition-all duration-300' />
                         </div>
-                        <div>
-                            <p title={item.title} className='cursor-pointer text-xl text-[#121212] whitespace-nowrap overflow-hidden text-ellipsis'>{item.title}</p>
-                            <div className='mt-3'>
-                                {/* <a href={item.url} target='_blank' className="text-[13px] text-[#8F8F8F] hover:text-ecodarkgreen">Read the full blog..</a> */}
+                        <div className='px-4 py-2 w-[100%] md:w-[75%]'>
+                            <div className='flex flex-col gap-y-3'>
+                                <span className="text-xl text-['black'] font-bold ">{item.title}</span>
+                                <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Catagories:</span> {item.categories}</span>
+                                <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Created at:</span> {item.created}</span>
+                            </div>
+                            <div>
+                            {/* <span className="text-xl text-[#00AD7F] font-medium">{item.categories}</span> */}
+                                <p title={item.title} className='cursor-pointer text-md mt-[15px] text-[#121212] '>{item.allText && item.allText[1] }</p>
+                                <div className='mt-3'>
+                                    {/* <a href={item.url} target='_blank' className="text-[13px] text-[#8F8F8F] hover:text-ecodarkgreen">Read the full blog..</a> */}
+                                </div>
                             </div>
                         </div>
+                        </div>
                     </div>
-
-                </div>
-            </Link>
+                </Link>
+            }
         </>
     )
 }

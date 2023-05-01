@@ -17,7 +17,7 @@ const SourceCodeDetails: React.FC<Props> = (props) => {
 
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <Search />
             <SourceCodeDetailsLayout sourceCodeId={sourceCodeId} />
         </>

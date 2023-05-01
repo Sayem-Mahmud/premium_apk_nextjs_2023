@@ -8,6 +8,8 @@ import Search from '../../Search/Search'
 import { PremiumApkApi } from '../../../src/API/PremiumApkApi'
 import { ApkData } from '../../../interfaces/models'
 import { useRouter } from 'next/router'
+import Loader from '../../helpers/Loader/Loader'
+import { ToastMessage } from '../../../src/utils/ToastMessage'
 
 interface Props {
 
@@ -26,10 +28,12 @@ const HomePage: React.FC<Props> = () => {
         const { res, err } = await PremiumApkApi.getAllApk(pageNumber);
         if (err) {
             console.log(err);
+            ToastMessage.notifyError("Server Error");
         }
         //@ts-ignore
         states.sourceCode=res.apkAllData
         setSourceCodes(res.apkAllData)
+        states.catSubValue=res.catSub
         states.totalApk = res.apkAllDataLength
         states.currentPage=1
     }
@@ -38,14 +42,19 @@ const HomePage: React.FC<Props> = () => {
     }, [])
 
     return <>
-        {sourceCodes.length > 0 && <div>
-             <Header />
+        {sourceCodes.length > 0 ? <div>
             <Search
                 sourceCodes={sourceCodes} />
         <Layout
             sourceCodes={sourceCodes}
         />
-        </div>}
+        </div>
+            :     
+            <div className="my-5">
+                <div className='container-x bg-white flex justify-center items-start h-[100vh]'>
+                    <Loader />
+                </div>
+            </div>}
        
         
     </>

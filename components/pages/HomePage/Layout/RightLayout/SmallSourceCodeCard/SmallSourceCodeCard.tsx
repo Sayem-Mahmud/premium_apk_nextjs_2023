@@ -13,18 +13,31 @@ const SmallSourceCodeCard: React.FC<Props> = ({ item }) => {
 
     return (
         <>
-            <Link href={`/sourceCode/${item.id}`} className="hover:bg-transparent">
-                <div className='flex flex-col gap-y-4'>
-                    <div>
-                        <img src={item.image} alt="" className='w-full h-[100px] bg-gray-400 object-cover' loading='lazy' />
+            {/* <Link href={`/sourceCode/${item.id}`} className="hover:bg-transparent"> */}
+            <li>
+                <div className='flex flex-col gap-y-1 '>
+                    <div >
+                        {/* <img src={item.image} alt="" className='w-full h-[100px] bg-gray-400 object-cover' loading='lazy' /> */}
+                        <Link href={`/category/${item.catagory.includes('android-games')?'games':item.catagory.replace(/-/g," ")}`}>
+                    <p style={{fontSize:'15px', fontWeight:'bold',marginTop:'15px'}}>{item.catagory.includes('android-games')?'GAMES':item.catagory.replace(/-/g," ").toUpperCase()}</p>
+                    </Link>
                     </div>
-                    <div className='flex flex-col gap-y-2 flex-1 justify-between'>
+                    <ul style={{marginLeft:'15px',marginTop:'2px',listStyle: 'disc',color:'#00AD7F'}}>
+                <div className='flex flex-col gap-y-2 flex-1 justify-between'>
+                    {item.subcatagory.map((cat:any) => { 
+                        return (
+                            <li>
                         <div>
-                            <p className="text-[#020202] text-[17.3481px] font-medium">{item.title}</p>
+                            <p className="text-[#020202] text-[15.3481px]">{cat.replace(/-/g," ")}</p>
+                                </div>
+                                </li>
+                            
+                    )})
+                  }
                         </div>
-                    </div>
+                        </ul>
                 </div>
-            </Link>
+            </li> 
         </>
     )
 }

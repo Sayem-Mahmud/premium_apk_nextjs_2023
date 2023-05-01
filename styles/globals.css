@@ -11,7 +11,7 @@ body {
 }
 
 .container-x {
-  max-width: 1440px !important;
+  max-width: 1200px !important;
   width: 100%;
   background-color: #FEFEFE;
   margin: 0 auto;
@@ -21,8 +21,9 @@ body {
 
 /* Search bar styles*/
 
+
 .search {
-  max-width: 1440px !important;
+  max-width: 1200px !important;
   width: 100%;
   margin: 1rem auto;
   position: relative;

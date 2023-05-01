@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { controller } from '../../../../../src/state/StateController'
 import { Jsondata } from '../../../../../src/utils/Jsondata'
 import SmallSourceCodeCard from './SmallSourceCodeCard/SmallSourceCodeCard'
+import Loader from '../../../../helpers/Loader/Loader'
 
 interface Props {
 }
@@ -12,16 +13,25 @@ const RightLayout: React.FC<Props> = (props) => {
     const states = useSelector(() => controller.states)
 
     return (
-        <div className='sm:w-full md:w-[20%] p-3'>
-            <div className='grid grid-cols-1 gap-y-10 md:gap-y-10'>
+        <div className="sm:w-full md:w-[25%] md:m-auto pl-[25px] pe-[25px] bg-[#f9f9f9]" style={{ marginTop: '25px', marginBottom: '25px', paddingBottom: '20px'}}>
+            <div className='grid grid-cols-1 md:mt-[10px]'>
+                <ul style={{listStyle: 'disc',color:'#00AD7F'}}>
                 {
-                    Jsondata.blogsTrendingData.map((item) => {
+                    // Jsondata.blogsTrendingData.length?
+                    // Jsondata.blogsTrendingData.map((item) => {
+                        states?.catSubValue.length?
+                        states?.catSubValue.map((item) => {
                         return (
                             <SmallSourceCodeCard item={item} />
                         )
 
                     }
-                    )}
+                        ) :
+                        <div className="flex justify-center items-start h-[60vh]">
+                     <Loader />
+                    </div>
+                    }
+                    </ul>
             </div>
         </div>
     )

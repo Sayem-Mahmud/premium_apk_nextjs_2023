@@ -13,15 +13,29 @@ export interface IResponseUser extends User {
 export interface IResponseApk extends MyFetchInterface {
   res: {
     apkAllData: Array<ApkData>
-    apkAllDataLength: number
+    apkAllDataLength: number,
+    catSub:Array<any>
   }
 }
 export interface IResponseSingleApk extends MyFetchInterface {
-  res: ApkData
+  res: {
+    apkOne: ApkData,
+    catSub: Array<any>
+  }   
 }
 export interface IResponseApkSearch extends MyFetchInterface {
   res: {
     apkAllDataSearch: Array<ApkData>
-    apkAllDataLengthSearch: number
+    apkAllDataLengthSearch: number,
+    catSub:Array<any>
+   
+  }
+}
+
+export interface IResponseApkCategorized extends MyFetchInterface {
+  res: {
+    categorizedApk: Array<ApkData>
+    apkAllDataLengthCategorized: number
+    catSub:Array<any>
   }
 }

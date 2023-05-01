@@ -5,6 +5,7 @@ import Header from '../../shared/Header/Header'
 import Search from '../../Search/Search'
 import { useRouter } from 'next/router'
 import { PremiumApkApi} from '../../../src/API/PremiumApkApi'
+import { ToastMessage } from '../../../src/utils/ToastMessage'
 
 interface Props {
 }
@@ -15,15 +16,16 @@ const DownloadPage: React.FC<Props> = (props) => {
     const router = useRouter();
     const { downloadId } = router.query;
 
-    const [code, setCode] = useState<any>(null)
+    const [apk, setApk] = useState<any>(null)
 
     const fetchSingleCodeDetails = async (downloadId: string) => {
         const { res, err } = await PremiumApkApi.getSingleApk(downloadId);
         if (err) {
             console.log(err);
+            ToastMessage.notifyError("Server Error");
         }
         console.log("resCode", res);
-        setCode(res)
+        setApk(res.apkOne)
     }
 
     const splitUrlName = (url: string) => {
@@ -57,26 +59,27 @@ const DownloadPage: React.FC<Props> = (props) => {
 
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <Search />
-            <div className='flex flex-col container-x justify-center items-center py-5'>
+            <div className='flex flex-col container-x justify-center items-center py-5 '>
                 <p>{downloadId}</p>
                 <div>
                     {states.showData ? (
-                        <div className='flex flex-col gap-10 items-center'>
+                        <div className='flex flex-col gap-10 items-center '>
                             <div>
                                 <p>Your Download Links</p>
                             </div>
                             <div>
                                 {
-                                    code?.downloadFile.map((item:any, index:any) => {
+                                    apk?.downloadFile.map((item:any, index:any) => {
                                         return (
-                                            <div key={index} className='flex flex-col gap-5 items-center'>
-                                                <a href={item?.href} className='capitalize text-pscteal' download>{splitUrlName(item.href)}</a>
+                                            <div key={index} className=' my-[10px] flex flex-col gap-5 items-center text-black bg-white hover:bg-black  border-solid border-2 border-black cursor-pointer '>
+                                                <a href={item?.href} className='capitalize hover:bg-none ' download>{item.innerText}</a>
                                             </div>
                                         )
                                     })
                                 }
+                                  {apk?.requiredAndroid && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">Required Android:</span> {apk?.requiredAndroid}</span>}
                             </div>
                         </div>
                     ) : (

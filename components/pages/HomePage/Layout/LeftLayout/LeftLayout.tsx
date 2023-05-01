@@ -4,6 +4,7 @@ import { controller } from '../../../../../src/state/StateController'
 import BigSourceCodeCard from './BigSourceCodeCard/BigSourceCodeCard'
 import ReactPaginate from 'react-paginate';
 import { ApkData } from '../../../../../interfaces/models';
+import Loader from '../../../../helpers/Loader/Loader';
 interface Props {
     sourceCodes: Array<ApkData>
 }
@@ -28,6 +29,9 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
             console.log('kkk');
             window.location.href = `/page/${event.selected + 1}/search/${states.searchValue}`;
         }
+        else if (url.includes('category')) {
+            window.location.href = `/page/${event.selected + 1}/category/${states.categoryValue}`;
+        }
         else {
             window.location.href = `/page/${event.selected + 1}`;
         }
@@ -39,11 +43,12 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
 
 
     return (
-        <div className='sm:w-full md:w-[80%] p-3'>
+        <>
             {
                 sourceCodes
                     ? <>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-7 gap-y-10 md:gap-y-10'>
+                        {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-7 gap-y-10 md:gap-y-10'> */}
+                        <div>
                     {
                         sourceCodes.map((item) => {
                             return (
@@ -78,12 +83,14 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
                     />
                 </div>
             </>
-                :
-                (
-                    <div className="text-3xl text-pscblack">Loading...</div>
-                )
+                 :
+                 (
+                     <div className="flex justify-center items-start h-[60vh]">
+                         <Loader />
+                     </div>
+                 )
             }
-        </div>
+        </>
     )
 }
 
