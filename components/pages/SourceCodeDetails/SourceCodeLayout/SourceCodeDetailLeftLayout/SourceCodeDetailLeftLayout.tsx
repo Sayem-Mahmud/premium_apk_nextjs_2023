@@ -69,8 +69,9 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({ sourceCodeId }) => {
                             <img src={apk?.imgSrc} alt="" className='mt-[10px] bg-gray-400 w-full md:w-52 object-cover scale-[1] hover:scale-[1.3] transition-all duration-300' />
                         </div>
                         <div className='px-4 py-2 w-[100%] md:w-[75%]'>
-                            <div className='flex flex-col gap-y-3'>
+                            <div className='flex flex-col gap-y-2'>
                                 <span className="text-xl text-['black'] font-bold ">{apk?.title}</span>
+                                {/* {apk?.categories.split(',').map((cat:any)=>{return ()})} */}
                                 <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Catagories:</span> {apk?.categories}</span>
                                 <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Created at:</span> {apk?.created}</span>
                             </div>
@@ -111,7 +112,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({ sourceCodeId }) => {
 
                 <div className='flex flex-col gap-y-3'>
                 <div style={{ margin: "auto", marginTop: '20px', height:'50px', width:'50%',marginBottom: '20px'}} className='bg-psclightteal text-center rounded hover:bg-pscblack'>
-                        <Link className='text-white flex justify-center text-[35px]' href={`/sourceCode/${sourceCodeId}/download/${sourceCodeId}`}>Download Now</Link>
+                        <Link className='text-white flex justify-center text-[35px] hover:bg-pscblack' href={`/sourceCode/${sourceCodeId}/download/${sourceCodeId}`}>Download Now</Link>
                     </div>
                         {apk?.version && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">Version:</span> {apk?.version}</span>}
                         {apk?.fileSize && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">File Size:</span> {apk?.fileSize}</span>}
