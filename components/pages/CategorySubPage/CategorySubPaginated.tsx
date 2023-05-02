@@ -4,7 +4,7 @@ import { controller } from '../../../src/state/StateController'
 import { useRouter } from 'next/router'
 import { ApkData} from '../../../interfaces/models'
 import Search from '../../Search/Search'
-import CategoryLayout from './CategoryLayout/CategoryLayout'
+import CategoryLayout from '../CatagoryPage/CategoryLayout/CategoryLayout'
 import Loader from '../../helpers/Loader/Loader'
 import { PremiumApkApi } from '../../../src/API/PremiumApkApi'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
@@ -12,7 +12,7 @@ import { ToastMessage } from '../../../src/utils/ToastMessage'
 interface Props {
 }
 
-const CategoryPagePaginated: React.FC<Props> = (props) => {
+const CategorySubPaginated: React.FC<Props> = (props) => {
 
     const states = useSelector(() => controller.states)
     const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
@@ -25,45 +25,35 @@ const CategoryPagePaginated: React.FC<Props> = (props) => {
             console.log(err);
             ToastMessage.notifyError("Server Error");
         }
-
-        if (res?.categorizedApk.length === 0) {
-            setSourceCodes([
-                {
-                    message: "No Data"
-                }
-            ])
-            // states.catSubValue=res.catSub
-        }
         //@ts-ignore
-        else {
-            setSourceCodes(res?.categorizedApk)
-            states.totalApk = res?.apkAllDataLengthCategorized
-            // states.catSubValue=res.catSub
-            states.currentPage = pageNum >= 1 ? pageNum : 1
-            states.categoryValue = category
-            states.categorySubValue = subCat
-        }
+        setSourceCodes(res?.categorizedApk)
+        states.totalApk = res?.apkAllDataLengthCategorized
+        // states.catSubValue=res.catSub
+        states.currentPage = pageNum >= 1 ? pageNum : 1
+        states.categoryValue = category
+        states.categorySubValue=subCat
     }
     useEffect(() => {
-        if (categorySearch && page) {
+        if (categorySearch && page && subCat) {
+            console.log('subcatuu',subCat)
             const categoryString = categorySearch.toString()
             const pageNum = (parseInt(page.toString()))
-            if (pageNum >= 1 && categoryString !== '') {
-                console.log('hello')
-                fetchCodeData(categoryString, pageNum,'')
+            // if (pageNum >= 1) {
+            //     console.log('hello')
+            //     fetchCodeData(categoryString, pageNum,'')
                
-            }
-            // else if (pageNum >= 1 && categoryString !== '' && subCat) {
-            //     console.log('no');
-            //     fetchCodeData(categoryString, pageNum,subCat.toString())
             // }
+            if (pageNum >= 1 && subCat) {
+                console.log('no');
+                fetchCodeData(categoryString, pageNum,subCat.toString())
+            }
             else {
                 window.location.href = '/';
             }
 
         }
 
-    }, [categorySearch, page])
+    }, [categorySearch, page, subCat])
 
     return (
         <>
@@ -84,4 +74,4 @@ const CategoryPagePaginated: React.FC<Props> = (props) => {
     )
 }
 
-export default CategoryPagePaginated
+export default CategorySubPaginated

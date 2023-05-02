@@ -22,7 +22,7 @@ const SourceCodeDetailRightLayout: React.FC<Props> = ({sourceCodeId}) => {
         }
         console.log("res", res);
         // setApk(res.apkOne)
-        setCatSub(res.catSub)
+        // setCatSub(res.catSub)
     }
 
     useEffect(() => {
@@ -39,9 +39,10 @@ const SourceCodeDetailRightLayout: React.FC<Props> = ({sourceCodeId}) => {
             <div className='grid grid-cols-1 md:mt-[10px]'>
             <ul style={{listStyle: 'disc',color:'#00AD7F'}}>
                 {
-                    // Jsondata.blogsTrendingData.map((item) => {
-                        setCatSub.length?
-                        catSub.map((item) => {
+                    Jsondata.categoriesSub.length?
+                    Jsondata.categoriesSub.map((item) => {
+                        // setCatSub.length?
+                        // catSub.map((item) => {
                         return (
                             <SmallSourceCodeCard item={item} />
                         )

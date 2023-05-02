@@ -17,10 +17,10 @@ const RightLayout: React.FC<Props> = (props) => {
             <div className='grid grid-cols-1 md:mt-[10px]'>
                 <ul style={{listStyle: 'disc',color:'#00AD7F'}}>
                 {
-                    // Jsondata.blogsTrendingData.length?
-                    // Jsondata.blogsTrendingData.map((item) => {
-                        states?.catSubValue.length?
-                        states?.catSubValue.map((item) => {
+                    Jsondata.categoriesSub.length?
+                    Jsondata.categoriesSub.map((item) => {
+                        // states?.catSubValue.length?
+                        // states?.catSubValue.map((item) => {
                         return (
                             <SmallSourceCodeCard item={item} />
                         )

@@ -5,14 +5,14 @@ import { ApkData} from '../../../interfaces/models'
 import { useRouter } from 'next/router'
 import { PremiumApkApi} from '../../../src/API/PremiumApkApi'
 import Search from '../../Search/Search'
-import CategoryLayout from './CategoryLayout/CategoryLayout'
+import CategoryLayout from '../CatagoryPage/CategoryLayout/CategoryLayout'
 import Loader from '../../helpers/Loader/Loader'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
 
 interface Props {
 }
 
-const CategoryPage: React.FC<Props> = (props) => {
+const CategorySubPage: React.FC<Props> = (props) => {
 
     const states = useSelector(() => controller.states)
     const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
@@ -21,7 +21,7 @@ const CategoryPage: React.FC<Props> = (props) => {
 
 
     const fetchCodeData = async (category: string,subCat:string) => {
-
+        console.log('catSubPage enterd',subCat)
         const { res, err } = await PremiumApkApi.getAllCategorizedApk(category, 1,subCat);
         if (err) {
             console.log(err);
@@ -46,14 +46,12 @@ const CategoryPage: React.FC<Props> = (props) => {
 
     }
     useEffect(() => {
-        if (category) {
+        if (subCat && category) {
+            console.log('catSubPage')
             const categoryString = category.toString()
-            fetchCodeData(categoryString, '')
-            // if (subCat) {
-            //     fetchCodeData(categoryString,subCat.toString())
-            // }
+            fetchCodeData(categoryString,subCat.toString())
         }
-    }, [category])
+    }, [category,subCat])
 
     return (
         <>
@@ -74,4 +72,4 @@ const CategoryPage: React.FC<Props> = (props) => {
     )
 }
 
-export default CategoryPage
+export default CategorySubPage

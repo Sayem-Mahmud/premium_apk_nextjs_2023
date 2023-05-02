@@ -34,7 +34,7 @@ const SearchPagePaginated: React.FC<Props> = () => {
         states.totalApk = res?.apkAllDataLengthSearch
         states.currentPage = pageNum >= 1 ? pageNum : 1
         states.searchValue = searchVal
-        states.catSubValue=res.catSub
+        // states.catSubValue=res.catSub
     }
     useEffect(() => {
         if (pageSearch && page) {

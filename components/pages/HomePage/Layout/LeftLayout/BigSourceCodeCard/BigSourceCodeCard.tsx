@@ -20,7 +20,7 @@ const BigSourceCodeCard: React.FC<Props> = ({ item }) => {
                     >
                         <div className='flex flex-col md:flex-row gap-y-4' style={{columnGap:'25px', padding:'0px 20px'}}>
                         <div className='overflow-hidden cursor-pointer rounded w-[100%] md:w-[20%]'>
-                            <img src={item.imgSrc} alt="" className='mx-auto my-[10px] bg-gray-400 w-[90%] md:w-52 object-cover scale-[1] hover:scale-[1.3] transition-all duration-300' />
+                            <img src={item.imgSrc} alt="" className='mx-auto my-[10px] bg-gray-400 w-[50%] md:w-52 object-cover scale-[1] hover:scale-[1.3] transition-all duration-300' />
                         </div>
                         <div className='px-4 py-2 w-[100%] md:w-[75%]'>
                             <div className='flex flex-col gap-y-3'>

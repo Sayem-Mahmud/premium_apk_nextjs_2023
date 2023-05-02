@@ -14,6 +14,125 @@ export class Jsondata {
             category: "top games",
         },
     ]
+
+    static categoriesSub = [
+        {
+            category: "Apps",
+            subcategory: [
+                'Art & Design',
+                'Auto & Vehicles',
+                'Best Apps',
+                'body building',
+                'Books & Reference',
+                'Business',
+                'Calendar and reminders',
+                'Camera',
+                'Casino',
+                'Communication',
+                'Edit music',
+                'Education',
+                'Entertainment',
+                'Finance',
+                'Health & Fitness',
+                'Learning',
+                'Libraries & Demo',
+                'Lifestyle',
+                'Maps & Navigation',
+                'Media & Video',
+                'Medical',
+                'Music & Audio',
+                'Music editing',
+                'News & Magazines',
+                'Personalization',
+                'Photography',
+                'Practical',
+                'Productivity',
+                'Radio music and TV',
+                'shopping',
+                'Social',
+                'Sports',
+                'Tools',
+                'Top Apps',
+                'Transportation',
+                'Travel & Local',
+                'Video and photo converter',
+                'Video editing',
+                'Video Players & Editors',
+                'Weather'
+            ]
+        },
+        {
+            category: "Games",
+            subcategory: [
+                'Action',
+                'Adventure',
+                'Arcade',
+                'Auto & Vehicles',
+                'Best Games',
+                'Board',
+                'Card',
+                'Casino',
+                'Casual',
+                'Comics',
+                'Educational',
+                'Entertainment',
+                'Family',
+                'House & Home',
+                'Large Games',
+                'Lifestyle',
+                'Music',
+                'Online',
+                'Puzzle',
+                'Racing',
+                'Role Playing',
+                'Simulation',
+                'Social',
+                'Sports',
+                'Strategy',
+                'Suggested games',
+                'Tefanni',
+                'Top Games',
+                'Trivia',
+                'Word',
+            ]
+        },
+        {
+            category: "HD Games",
+            subcategory: [
+            
+            ]
+        },
+        {
+            category: "Learning",
+            subcategory: [
+
+            ]
+        },
+        {
+            category: "Music",
+            subcategory: [
+
+            ]
+        },
+        {
+            category: "Photo Editing",
+            subcategory: [
+
+            ]
+        },
+        {
+            category: "Recommend Apps",
+            subcategory: [
+
+            ]
+        },
+        {
+            category: "Win",
+            subcategory: [
+                'Apps'
+            ]
+        },
+    ]
 }
 
 

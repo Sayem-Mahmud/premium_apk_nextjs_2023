@@ -6,6 +6,7 @@ import Search from '../../Search/Search'
 import { useRouter } from 'next/router'
 import { PremiumApkApi} from '../../../src/API/PremiumApkApi'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
+import Link from 'next/link'
 
 interface Props {
 }
@@ -73,8 +74,8 @@ const DownloadPage: React.FC<Props> = (props) => {
                                 {
                                     apk?.downloadFile.map((item:any, index:any) => {
                                         return (
-                                            <div key={index} className=' my-[10px] flex flex-col gap-5 items-center text-black bg-white hover:bg-black  border-solid border-2 border-black cursor-pointer '>
-                                                <a href={item?.href} className='capitalize hover:bg-none ' download>{item.innerText}</a>
+                                            <div key={index} className=' my-[10px] flex flex-col gap-5 items-center text-black bg-white border-solid border-2 border-black cursor-pointer '>
+                                                <Link href={item?.href} className='capitalize w-full text-center' >{item.innerText}</Link>
                                             </div>
                                         )
                                     })

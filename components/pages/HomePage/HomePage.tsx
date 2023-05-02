@@ -33,7 +33,7 @@ const HomePage: React.FC<Props> = () => {
         //@ts-ignore
         states.sourceCode=res.apkAllData
         setSourceCodes(res.apkAllData)
-        states.catSubValue=res.catSub
+        // states.catSubValue=res.catSub
         states.totalApk = res.apkAllDataLength
         states.currentPage=1
     }

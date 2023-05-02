@@ -37,14 +37,14 @@ const SearchPage: React.FC<Props> = () => {
                     message: "No Data"
                 }
             ])
-            states.catSubValue= res.catSub
+            // states.catSubValue= res.catSub
         }
         else {
             setSourceCodes(res?.apkAllDataSearch)
             states.totalApk = res?.apkAllDataLengthSearch
             states.currentPage = 1
             states.searchValue = searchVal
-            states.catSubValue= res.catSub
+            // states.catSubValue= res.catSub
         }
 
     }

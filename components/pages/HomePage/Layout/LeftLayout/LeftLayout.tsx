@@ -29,8 +29,11 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
             console.log('kkk');
             window.location.href = `/page/${event.selected + 1}/search/${states.searchValue}`;
         }
-        else if (url.includes('category')) {
+        else if (url.includes('category') && !url.includes('subcat')) {
             window.location.href = `/page/${event.selected + 1}/category/${states.categoryValue}`;
+        }
+        else if (url.includes('subcat') && url.includes('category')) {
+            window.location.href = `/page/${event.selected + 1}/category/${states.categoryValue}/subcat/${states.categorySubValue}`;
         }
         else {
             window.location.href = `/page/${event.selected + 1}`;

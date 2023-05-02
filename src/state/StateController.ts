@@ -20,8 +20,9 @@ export interface IStates {
     totalApk: number,
     sourceCode: Array<ApkData>,
     searchValue: string,
-    catSubValue: Array<any>,
+    // catSubValue: Array<any>,
     categoryValue: string,
+    categorySubValue: string,
     open: boolean
 }
 
@@ -29,14 +30,15 @@ export class Controller {
     @state
     states: IStates = {
         currentPage: 1,
-        itemsPerPage: 4,
+        itemsPerPage: 8,
         seconds: 10,
         showData: false,
         totalApk: 0,
         sourceCode: [],
         searchValue: '',
-        catSubValue: [],
+        // catSubValue: [],
         categoryValue: '',
+        categorySubValue: '',
         open: false
     }
 

@@ -34,7 +34,7 @@ const HomePage2: React.FC<Props> = () => {
         //@ts-ignore
         setSourceCodes(res.apkAllData)
         states.totalApk = res.apkAllDataLength
-        states.catSubValue= res.catSub
+        // states.catSubValue= res.catSub
         states.currentPage=pageNumber>=1?pageNumber:1
     }
     useEffect(() => {

@@ -66,15 +66,15 @@ export class PremiumApkApi {
     return await callFetch(`${API_ENDPOINT}/apks/findAllApkSearch/?search=${search}&page=${page}`, requestOptions)
   }
 
-  static async getAllCategorizedApk(category: string, page: number): Promise<IResponseApkCategorized> {
-    console.log('catt', category, page)
+  static async getAllCategorizedApk(category: string, page: number, subCat?:string): Promise<IResponseApkCategorized> {
+    console.log('cattuuu', category, page,subCat)
     console.log("🚀 ~ file: PremiumSourceCodeApi.ts:49 ~ PremiumSourceCodeApi ~ getSingleApk ~ id:", category)
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
 
-    return await callFetch(`${API_ENDPOINT}/apks/findAllCategorizedApk/?category=${category}&page=${page}`, requestOptions)
+    return await callFetch(`${API_ENDPOINT}/apks/findAllCategorizedApk/?category=${category}&subCat=${subCat}&page=${page}`, requestOptions)
   }
 
 }
