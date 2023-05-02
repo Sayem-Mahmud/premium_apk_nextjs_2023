@@ -25,8 +25,8 @@ const BigSourceCodeCard: React.FC<Props> = ({ item }) => {
                         <div className='px-4 py-2 w-[100%] md:w-[75%]'>
                             <div className='flex flex-col gap-y-3'>
                                 <span className="text-xl text-['black'] font-bold ">{item.title}</span>
-                                <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Catagories:</span> {item.categories}</span>
-                                <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Created at:</span> {item.created}</span>
+                                <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Catagories:</span> {item.created && item.categories}</span>
+                                <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Created at:</span> {item.created && item.created}</span>
                             </div>
                             <div>
                             {/* <span className="text-xl text-[#00AD7F] font-medium">{item.categories}</span> */}
