@@ -38,8 +38,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         ToastMessage.notifyError("Server Error");
     }
 
-    const apk = res?.categorizedApk || [];
+    let apk = res?.categorizedApk || [];
     const allApkLength = res?.apkAllDataLengthCategorized || 0;
+
+    if (apk.length === 0) {
+        apk = [
+       {
+           message: "No Data"
+       }
+        ]
+       }
 
     return {
         props: {

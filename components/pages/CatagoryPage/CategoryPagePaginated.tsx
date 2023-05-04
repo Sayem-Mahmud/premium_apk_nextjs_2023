@@ -25,7 +25,7 @@ const CategoryPagePaginated: React.FC<Props> = ({apk,allApkLength,categoryValue,
             // states.catSubValue=res.catSub
             states.currentPage = page >= 1 ? page : 1
             states.categoryValue = categoryValue.toString()
-            // states.categorySubValue = subCat
+            states.categorySubValue = null
     // const { page, categorySearch,subCat } = router.query;
 
     // const fetchCodeData = async (category: string, pageNum: number, subCat:string) => {

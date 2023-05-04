@@ -26,6 +26,7 @@ const SearchPagePaginated: React.FC<Props> = ({apk,searchValueApkLength,page,sea
     states.totalApk =searchValueApkLength
     states.currentPage = page >= 1 ? page : 1
     states.searchValue = searchValue.toString()
+    states.categorySubValue=""
 
 
 

@@ -7,7 +7,7 @@ import CategorySubPaginated from "../../../../../../components/pages/CategorySub
 import { ApkData } from "../../../../../../interfaces/models";
 import { ToastMessage } from "../../../../../../src/utils/ToastMessage";
 import { PremiumApkApi } from "../../../../../../src/API/PremiumApkApi";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
 interface Props {
     apk: Array<ApkData>;

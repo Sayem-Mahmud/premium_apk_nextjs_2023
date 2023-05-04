@@ -8,6 +8,7 @@ import CategoryLayout from '../CatagoryPage/CategoryLayout/CategoryLayout'
 import Loader from '../../helpers/Loader/Loader'
 import { PremiumApkApi } from '../../../src/API/PremiumApkApi'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
+import CategorySubLayout from '../CatagoryPage/CategorySubLayout/CategorySubLayout'
 
 interface Props {
     apk: Array<ApkData>;
@@ -72,7 +73,7 @@ const CategorySubPaginated: React.FC<Props> = ({ apk, allApkLength, categoryValu
         <>
             {apk?.length > 0 ? <div>
                 <Search />
-                <CategoryLayout
+                <CategorySubLayout
                     apk={apk}
                 />
             </div>

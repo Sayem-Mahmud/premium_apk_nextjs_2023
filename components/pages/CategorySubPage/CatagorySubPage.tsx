@@ -8,6 +8,7 @@ import Search from '../../Search/Search'
 import CategoryLayout from '../CatagoryPage/CategoryLayout/CategoryLayout'
 import Loader from '../../helpers/Loader/Loader'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
+import CategorySubLayout from '../CatagoryPage/CategorySubLayout/CategorySubLayout'
 
 interface Props {
     apk: Array<ApkData>;
@@ -63,9 +64,9 @@ const CategorySubPage: React.FC<Props> = ({ apk,allApkLength,categoryValue,subCa
 
     return (
         <>
-            {apk?.length > 0 ? <div>
+            {apk?.length > 0 && subCat ? <div>
                 <Search />
-                <CategoryLayout
+                <CategorySubLayout
                     apk={apk}
                 />
             </div>

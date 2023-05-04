@@ -25,7 +25,7 @@ const HomePagePaginated: React.FC<Props> = ({apk,allApkLength,page}) => {
         states.totalApk = allApkLength
     //     // states.catSubValue= res.catSub
         states.currentPage=page>=1?page:1
-
+        states.categorySubValue = null
 
     // const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
     // const router = useRouter();

@@ -25,7 +25,7 @@ const CategoryPage: React.FC<Props> = ({apk,categoryValue,allApkLength}) => {
     states.totalApk = allApkLength
     states.currentPage = 1
     states.categoryValue = categoryValue.toString()
-    // states.categorySubValue=subCat
+    states.categorySubValue=""
 
 
     // const fetchCodeData = async (category: string,subCat:string) => {

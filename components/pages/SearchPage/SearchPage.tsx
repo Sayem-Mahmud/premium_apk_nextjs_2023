@@ -22,6 +22,8 @@ const SearchPage: React.FC<Props> = ({apk,searchValue,searchValueApkLength}) => 
     states.totalApk = searchValueApkLength
     states.currentPage = 1
     states.searchValue = searchValue?.toString()
+    states.categorySubValue = null
+    
 
 
 

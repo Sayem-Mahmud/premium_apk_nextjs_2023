@@ -40,9 +40,9 @@ const LeftLayout: React.FC<Props> = ({ apk }) => {
         }
     };
 
-    useEffect(() => {
+    // useEffect(() => {
     
-    },[states.currentPage])
+    // },[states.currentPage])
 
 
     return (

@@ -22,7 +22,7 @@ export interface IStates {
     searchValue: string,
     // catSubValue: Array<any>,
     categoryValue: string,
-    categorySubValue: string | null,
+    categorySubValue: string|null ,
     open: boolean
 }
 
