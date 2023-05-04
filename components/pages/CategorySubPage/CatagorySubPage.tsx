@@ -10,55 +10,63 @@ import Loader from '../../helpers/Loader/Loader'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
 
 interface Props {
+    apk: Array<ApkData>;
+    categoryValue: string | string[];
+    allApkLength: number,
+    subCat:string | string[];
 }
 
-const CategorySubPage: React.FC<Props> = (props) => {
+const CategorySubPage: React.FC<Props> = ({ apk,allApkLength,categoryValue,subCat }) => {
 
     const states = useSelector(() => controller.states)
-    const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
-    const router = useRouter();
-    const { category, subCat } = router.query;
+    // const [apk, setApk] = useState<Array<ApkData>>([]);
+    // const router = useRouter();
+    // const { category, subCat } = router.query;
+    // setApk(res?.categorizedApk)
+    states.totalApk = allApkLength
+    states.currentPage = 1
+    states.categoryValue = categoryValue.toString()
+    states.categorySubValue=subCat.toString()
 
+    // const fetchCodeData = async (category: string,subCat:string) => {
+    //     console.log('catSubPage enterd',subCat)
+    //     const { res, err } = await PremiumApkApi.getAllCategorizedApk(category, 1,subCat);
+    //     if (err) {
+    //         console.log(err);
+    //         ToastMessage.notifyError("Server Error");
+    //     }
+    //     //@ts-ignore
+    //     if (res?.categorizedApk.length === 0) {
+    //         setApk([
+    //             {
+    //                 message: "No Data"
+    //             }
+    //         ])
+    //         // states.catSubValue=res.catSub
+    //     }
+    //     else {
+    //         setApk(res?.categorizedApk)
+    //         states.totalApk = res?.apkAllDataLengthCategorized
+    //         states.currentPage = 1
+    //         states.categoryValue = category
+    //         states.categorySubValue=subCat
+    //     }
 
-    const fetchCodeData = async (category: string,subCat:string) => {
-        console.log('catSubPage enterd',subCat)
-        const { res, err } = await PremiumApkApi.getAllCategorizedApk(category, 1,subCat);
-        if (err) {
-            console.log(err);
-            ToastMessage.notifyError("Server Error");
-        }
-        //@ts-ignore
-        if (res?.categorizedApk.length === 0) {
-            setSourceCodes([
-                {
-                    message: "No Data"
-                }
-            ])
-            // states.catSubValue=res.catSub
-        }
-        else {
-            setSourceCodes(res?.categorizedApk)
-            states.totalApk = res?.apkAllDataLengthCategorized
-            states.currentPage = 1
-            states.categoryValue = category
-            states.categorySubValue=subCat
-        }
-
-    }
-    useEffect(() => {
-        if (subCat && category) {
-            console.log('catSubPage')
-            const categoryString = category.toString()
-            fetchCodeData(categoryString,subCat.toString())
-        }
-    }, [category,subCat])
+    // }
+    // useEffect(() => {
+    //     if (subCat && category) {
+    //         console.log('catSubPage')
+    //         const categoryString = category.toString()
+    //         fetchCodeData(categoryString,subCat.toString())
+    //     }
+    // }, [category,subCat])
 
     return (
         <>
-            {sourceCodes?.length > 0 ? <div>
+            {apk?.length > 0 ? <div>
                 <Search />
                 <CategoryLayout
-                    sourceCodes={sourceCodes}
+                    apk={apk}
                 />
             </div>
                 :

@@ -7,48 +7,50 @@ import { useRouter } from 'next/router'
 import { PremiumApkApi} from '../../../src/API/PremiumApkApi'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
 import Link from 'next/link'
+import { ApkData } from '../../../interfaces/models'
 
 interface Props {
+    apk:ApkData
 }
 
-const DownloadPage: React.FC<Props> = (props) => {
+const DownloadPage: React.FC<Props> = ({apk}) => {
 
     const states = useSelector(() => controller.states)
     const router = useRouter();
     const { downloadId } = router.query;
 
-    const [apk, setApk] = useState<any>(null)
+    // const [apk, setApk] = useState<any>(null)
 
-    const fetchSingleCodeDetails = async (downloadId: string) => {
-        const { res, err } = await PremiumApkApi.getSingleApk(downloadId);
-        if (err) {
-            console.log(err);
-            ToastMessage.notifyError("Server Error");
-        }
-        console.log("resCode", res);
-        setApk(res.apkOne)
-    }
+    // const fetchSingleCodeDetails = async (downloadId: string) => {
+    //     const { res, err } = await PremiumApkApi.getSingleApk(downloadId);
+    //     if (err) {
+    //         console.log(err);
+    //         ToastMessage.notifyError("Server Error");
+    //     }
+    //     console.log("resCode", res);
+    //     setApk(res.apkOne)
+    // }
 
-    const splitUrlName = (url: string) => {
-        console.log("🚀 ~ file: DownloadPage.tsx:30 ~ splitUrlName ~ url:", url)
+    // const splitUrlName = (url: string) => {
+    //     console.log("🚀 ~ file: DownloadPage.tsx:30 ~ splitUrlName ~ url:", url)
 
-        let domain = url.split("://")[1]; // get the domain by splitting at "://"
-        if (domain.startsWith("www.")) {
-            domain = domain.substring(4); // remove "www." if it exists
-        }
-        const parts = domain.split("."); // split at the first dot
-        const result = parts[0]; // get the first part
-        console.log(result); // prints "workupload"
-        return result
-    }
+    //     let domain = url.split("://")[1]; // get the domain by splitting at "://"
+    //     if (domain.startsWith("www.")) {
+    //         domain = domain.substring(4); // remove "www." if it exists
+    //     }
+    //     const parts = domain.split("."); // split at the first dot
+    //     const result = parts[0]; // get the first part
+    //     console.log(result); // prints "workupload"
+    //     return result
+    // }
 
 
-    useEffect(() => {
-        if (downloadId === undefined) {
-            return
-        }
-        fetchSingleCodeDetails(downloadId as string)
-    }, [downloadId])
+    // useEffect(() => {
+    //     if (downloadId === undefined) {
+    //         return
+    //     }
+    //     fetchSingleCodeDetails(downloadId as string)
+    // }, [downloadId])
 
     useEffect(() => {
         if (states.seconds > 0) {
@@ -72,7 +74,7 @@ const DownloadPage: React.FC<Props> = (props) => {
                             </div>
                             <div>
                                 {
-                                    apk?.downloadFile.map((item:any, index:any) => {
+                                    apk?.downloadFile?.map((item:any, index:any) => {
                                         return (
                                         <div>
                                          { item?.href &&  <div key={index} className=' my-[10px] flex flex-col gap-5 items-center text-black bg-white border-solid border-2 border-black cursor-pointer '>

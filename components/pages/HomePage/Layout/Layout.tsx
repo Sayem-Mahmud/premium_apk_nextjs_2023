@@ -6,10 +6,10 @@ import RightLayout from './RightLayout/RightLayout'
 import { ApkData } from '../../../../interfaces/models'
 
 interface Props {
-    sourceCodes: Array<ApkData>
+    apk: Array<ApkData>
 }
 
-const Layout: React.FC<Props> = ({ sourceCodes }) => {
+const Layout: React.FC<Props> = ({ apk }) => {
 
     const states = useSelector(() => controller.states)
 
@@ -18,7 +18,7 @@ const Layout: React.FC<Props> = ({ sourceCodes }) => {
             <div className="flex flex-col md:flex-row md:gap-x-[1rem] gap-y-3 container-x">
                 <div className='w-full md:w-[75%] p-1'>
                 <LeftLayout
-                    sourceCodes={sourceCodes}
+                    apk={apk}
                     />
                     </div>
                 <RightLayout />

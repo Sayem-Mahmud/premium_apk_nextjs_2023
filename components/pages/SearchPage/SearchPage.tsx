@@ -12,58 +12,67 @@ import { ToastMessage } from '../../../src/utils/ToastMessage';
 export const API_ENDPOINT = process.env["NEXT_PUBLIC_API_ENDPOINT"];
 
 interface Props {
-
+    apk: Array<ApkData>
+    searchValue: string | string[] ;
+    searchValueApkLength:number
 }
 
-const SearchPage: React.FC<Props> = () => {
+const SearchPage: React.FC<Props> = ({apk,searchValue,searchValueApkLength}) => {
     const states = useSelector(() => controller.states)
-    const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
-    const router = useRouter();
-    const { search } = router.query;
+    states.totalApk = searchValueApkLength
+    states.currentPage = 1
+    states.searchValue = searchValue?.toString()
 
 
 
-    const fetchCodeData = async (searchVal: string) => {
+    // const fetchCodeData = async (searchVal: string) => {
 
-        const { res, err } = await PremiumApkApi.getAllApkSearch(searchVal, 1);
-        if (err) {
-            console.log(err);
-            ToastMessage.notifyError("Server Error");
-        }
-        //@ts-ignore
-        if (res?.apkAllDataSearch.length === 0) {
-            setSourceCodes([
-                {
-                    message: "No Data"
-                }
-            ])
-            // states.catSubValue= res.catSub
-        }
-        else {
-            setSourceCodes(res?.apkAllDataSearch)
-            states.totalApk = res?.apkAllDataLengthSearch
-            states.currentPage = 1
-            states.searchValue = searchVal
-            // states.catSubValue= res.catSub
-        }
+    //     const { res, err } = await PremiumApkApi.getAllApkSearch(searchVal, 1);
+    //     if (err) {
+    //         console.log(err);
+    //         ToastMessage.notifyError("Server Error");
+    //     }
+    //     //@ts-ignore
+    //     if (res?.apkAllDataSearch.length === 0) {
+    //         setSourceCodes([
+    //             {
+    //                 message: "No Data"
+    //             }
+    //         ])
+    //         // states.catSubValue= res.catSub
+    //     }
+    //     else {
+    //         setSourceCodes(res?.apkAllDataSearch)
+    //         states.totalApk = res?.apkAllDataLengthSearch
+    //         states.currentPage = 1
+    //         states.searchValue = searchVal
+    //         // states.catSubValue= res.catSub
+    //     }
 
-    }
-    useEffect(() => {
-        if (search) {
-            const searchC = search.toString()
-            fetchCodeData(searchC)
+    // }
+    // useEffect(() => {
+    //     if (search) {
+    //         const searchC = search.toString()
+    //         fetchCodeData(searchC)
 
-        }
-    }, [search])
+    //     }
+    // }, [search])
 
     return <>
 
-        <div>
+{apk?.length > 0 ? <div>
             <Search />
             <SearchLayout
-                sourceCodes={sourceCodes}
+                apk={apk}
             />
         </div>
+            :
+            <div className="my-5">
+                <div className='container-x bg-white flex justify-center items-start h-[100vh]'>
+                    <Loader />
+                </div>
+            </div>
+        }
 
     </>
 }

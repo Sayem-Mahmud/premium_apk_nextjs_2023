@@ -5,35 +5,37 @@ import Link from 'next/link'
 import { PremiumApkApi } from '../../../../../src/API/PremiumApkApi'
 import Loader from '../../../../helpers/Loader/Loader'
 import { ToastMessage } from '../../../../../src/utils/ToastMessage'
+import { ApkData } from '../../../../../interfaces/models'
 
 interface Props {
+    apk: ApkData
     sourceCodeId: string | string[] | undefined
 }
 
-const SourceCodeDetailLeftLayout: React.FC<Props> = ({ sourceCodeId }) => {
+const SourceCodeDetailLeftLayout: React.FC<Props> = ({apk, sourceCodeId }) => {
 
     const states = useSelector(() => controller.states)
 
-    const [apk, setApk] = useState<any>(null)
+    // const [apk, setApk] = useState<any>(null)
 
-    const fetchSingleCodeDetails = async (sourceCodeId: string) => {
-        const { res, err } = await PremiumApkApi.getSingleApk(sourceCodeId);
-        if (err) {
-            console.log(err);
-            ToastMessage.notifyError("Server Error");
-        }
-        console.log("res", res);
-        setApk(res.apkOne)
-        // states.catSubValue = res.catSub
-    }
+    // const fetchSingleCodeDetails = async (sourceCodeId: string) => {
+    //     const { res, err } = await PremiumApkApi.getSingleApk(sourceCodeId);
+    //     if (err) {
+    //         console.log(err);
+    //         ToastMessage.notifyError("Server Error");
+    //     }
+    //     console.log("res", res);
+    //     setApk(res.apkOne)
+    //     // states.catSubValue = res.catSub
+    // }
 
 
-    useEffect(() => {
-        if (sourceCodeId === undefined) {
-            return
-        }
-        fetchSingleCodeDetails(sourceCodeId as string)
-    }, [sourceCodeId])
+    // useEffect(() => {
+    //     if (sourceCodeId === undefined) {
+    //         return
+    //     }
+    //     fetchSingleCodeDetails(sourceCodeId as string)
+    // }, [sourceCodeId])
     return (
         // <div className='sm:w-full md:w-[80%] p-3'>
         //     <div className="flex flex-col gap-y-4 rounded"
@@ -77,7 +79,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({ sourceCodeId }) => {
                             </div>
                             <div>
                                 {/* <span className="text-xl text-[#00AD7F] font-medium">{apk.categories}</span> */}
-                                <p title={apk?.title} className='cursor-pointer text-md text-[#121212] '>{apk?.allText && apk?.allText[1]}</p>
+                                <p title={apk?.title} className='cursor-pointer text-md text-[#121212] '>{apk.allText  && (!apk.allText[1].includes('<img') || !apk.allText[1].includes('src=')) && apk.allText[1]}</p>
                                 <div className='mt-3'>
                                     {/* <a href={apk.url} target='_blank' className="text-[13px] text-[#8F8F8F] hover:text-ecodarkgreen">Read the full blog..</a> */}
                                 </div>
@@ -90,7 +92,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({ sourceCodeId }) => {
                         <Link className='bg-psclightteal  m-[20px auto] text-center py-3 px-5 text-white rounded hover:bg-pscblack' href={`/sourceCode/${sourceCodeId}/download/${sourceCodeId}`}>Download Now</Link>
                     </div>
                     {
-                        apk?.allText.map((text: any) => {
+                        apk?.allText?.map((text: any) => {
                             return (
                                 <>
                                     {(!text.includes('<img') || !text.includes('src=')) &&
@@ -101,7 +103,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({ sourceCodeId }) => {
                         })
                     }
                     {
-                        apk?.imgSrcAll.map((img: any) => {
+                        apk?.imgSrcAll?.map((img: any) => {
                             return (
                                 <>
                                     {img !== "" &&

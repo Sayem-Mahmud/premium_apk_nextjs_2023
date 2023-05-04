@@ -22,7 +22,7 @@ export interface IStates {
     searchValue: string,
     // catSubValue: Array<any>,
     categoryValue: string,
-    categorySubValue: string,
+    categorySubValue: string | null,
     open: boolean
 }
 
@@ -38,7 +38,7 @@ export class Controller {
         searchValue: '',
         // catSubValue: [],
         categoryValue: '',
-        categorySubValue: '',
+        categorySubValue: null,
         open: false
     }
 

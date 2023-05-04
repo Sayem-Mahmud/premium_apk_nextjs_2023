@@ -10,67 +10,76 @@ import { PremiumApkApi } from '../../../src/API/PremiumApkApi'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
 
 interface Props {
+    apk: Array<ApkData>;
+    allApkLength: number,
+    categoryValue: string | string[] ,
+    page: number,
 }
 
-const CategoryPagePaginated: React.FC<Props> = (props) => {
+const CategoryPagePaginated: React.FC<Props> = ({apk,allApkLength,categoryValue,page }) => {
 
     const states = useSelector(() => controller.states)
-    const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
+    // const [apk, setApk] = useState<Array<ApkData>>([]);
     const router = useRouter();
-    const { page, categorySearch,subCat } = router.query;
-
-    const fetchCodeData = async (category: string, pageNum: number, subCat:string) => {
-        const { res, err } = await PremiumApkApi.getAllCategorizedApk(category, pageNum,subCat);
-        if (err) {
-            console.log(err);
-            ToastMessage.notifyError("Server Error");
-        }
-
-        if (res?.categorizedApk.length === 0) {
-            setSourceCodes([
-                {
-                    message: "No Data"
-                }
-            ])
+            states.totalApk = allApkLength
             // states.catSubValue=res.catSub
-        }
-        //@ts-ignore
-        else {
-            setSourceCodes(res?.categorizedApk)
-            states.totalApk = res?.apkAllDataLengthCategorized
-            // states.catSubValue=res.catSub
-            states.currentPage = pageNum >= 1 ? pageNum : 1
-            states.categoryValue = category
-            states.categorySubValue = subCat
-        }
-    }
-    useEffect(() => {
-        if (categorySearch && page) {
-            const categoryString = categorySearch.toString()
-            const pageNum = (parseInt(page.toString()))
-            if (pageNum >= 1 && categoryString !== '') {
-                console.log('hello')
-                fetchCodeData(categoryString, pageNum,'')
+            states.currentPage = page >= 1 ? page : 1
+            states.categoryValue = categoryValue.toString()
+            // states.categorySubValue = subCat
+    // const { page, categorySearch,subCat } = router.query;
+
+    // const fetchCodeData = async (category: string, pageNum: number, subCat:string) => {
+    //     const { res, err } = await PremiumApkApi.getAllCategorizedApk(category, pageNum,subCat);
+    //     if (err) {
+    //         console.log(err);
+    //         ToastMessage.notifyError("Server Error");
+    //     }
+
+    //     if (res?.categorizedApk.length === 0) {
+    //         setApk([
+    //             {
+    //                 message: "No Data"
+    //             }
+    //         ])
+    //         // states.catSubValue=res.catSub
+    //     }
+    //     //@ts-ignore
+    //     else {
+    //         setApk(res?.categorizedApk)
+    //         states.totalApk = res?.apkAllDataLengthCategorized
+    //         // states.catSubValue=res.catSub
+    //         states.currentPage = pageNum >= 1 ? pageNum : 1
+    //         states.categoryValue = category
+    //         states.categorySubValue = subCat
+    //     }
+    // }
+    // useEffect(() => {
+    //     if (categorySearch && page) {
+    //         const categoryString = categorySearch.toString()
+    //         const pageNum = (parseInt(page.toString()))
+    //         if (pageNum >= 1 && categoryString !== '') {
+    //             console.log('hello')
+    //             fetchCodeData(categoryString, pageNum,'')
                
-            }
-            // else if (pageNum >= 1 && categoryString !== '' && subCat) {
-            //     console.log('no');
-            //     fetchCodeData(categoryString, pageNum,subCat.toString())
-            // }
-            else {
-                window.location.href = '/';
-            }
+    //         }
+    //         // else if (pageNum >= 1 && categoryString !== '' && subCat) {
+    //         //     console.log('no');
+    //         //     fetchCodeData(categoryString, pageNum,subCat.toString())
+    //         // }
+    //         else {
+    //             window.location.href = '/';
+    //         }
 
-        }
+    //     }
 
-    }, [categorySearch, page])
+    // }, [categorySearch, page])
 
     return (
         <>
-            {sourceCodes?.length > 0 ? <div>
+            {apk?.length > 0 ? <div>
                 <Search />
                 <CategoryLayout
-                    sourceCodes={sourceCodes}
+                    apk={apk}
                 />
             </div>
                 :

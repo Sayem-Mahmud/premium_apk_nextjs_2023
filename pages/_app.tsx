@@ -6,6 +6,8 @@ import { store } from "../src/state/StateController";
 import { ThemeProvider } from "next-themes";
 import Header from "../components/shared/Header/Header";
 import Footer from "../components/shared/Footer/Footer";
+import { ToastContainer } from "react-toastify";
+import NextNProgress from "nextjs-progressbar";
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
@@ -24,6 +26,24 @@ export default function MyApp(props: AppProps) {
       <Provider store={store}>
       <Header />
         <React.Fragment>
+        <NextNProgress
+            color="#2E4F4F"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={9}
+            showOnShallow={true}
+          />
+        <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <Component {...pageProps} />
         </React.Fragment>
         <Footer />

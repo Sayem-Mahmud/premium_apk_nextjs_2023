@@ -6,10 +6,10 @@ import ReactPaginate from 'react-paginate';
 import { ApkData } from '../../../../../interfaces/models';
 import Loader from '../../../../helpers/Loader/Loader';
 interface Props {
-    sourceCodes: Array<ApkData>
+    apk: Array<ApkData>
 }
 
-const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
+const LeftLayout: React.FC<Props> = ({ apk }) => {
 
 
     // const [itemOffset, setItemOffset] = useState(0);
@@ -48,12 +48,12 @@ const LeftLayout: React.FC<Props> = ({ sourceCodes }) => {
     return (
         <>
             {
-                sourceCodes
+                apk
                     ? <>
                         {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-7 gap-y-10 md:gap-y-10'> */}
                         <div>
                     {
-                        sourceCodes.map((item) => {
+                        apk.map((item) => {
                             return (
                                 <>
                                     <BigSourceCodeCard item={item} />

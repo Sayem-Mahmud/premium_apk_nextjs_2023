@@ -5,21 +5,32 @@ import { useRouter } from 'next/router'
 import Header from '../../shared/Header/Header'
 import Search from '../../Search/Search'
 import SourceCodeDetailsLayout from './SourceCodeLayout/SourceCodeDetailsLayout'
+import { ApkData } from '../../../interfaces/models'
+import Loader from '../../helpers/Loader/Loader'
 
 interface Props {
+    apk: ApkData
+    sourceCodeId: string | string[] | undefined
 }
 
-const SourceCodeDetails: React.FC<Props> = (props) => {
+const SourceCodeDetails: React.FC<Props> = ({apk, sourceCodeId}) => {
 
     const states = useSelector(() => controller.states)
     const router = useRouter();
-    const { sourceCodeId } = router.query;
-
+   
     return (
         <>
-            {/* <Header /> */}
-               <Search />
-            <SourceCodeDetailsLayout sourceCodeId={sourceCodeId} />
+            {sourceCodeId ? <>
+                <Search />
+                <SourceCodeDetailsLayout apk={apk} sourceCodeId={sourceCodeId} />
+            </>
+                :
+                <div className="my-5">
+                    <div className='container-x bg-white flex justify-center items-start h-[100vh]'>
+                        <Loader />
+                    </div>
+                </div>
+            }
         </>
     )
 }

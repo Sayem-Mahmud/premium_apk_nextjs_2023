@@ -11,42 +11,44 @@ import { useRouter } from 'next/router'
 import Loader from '../../helpers/Loader/Loader'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
 
+
 interface Props {
+    apk: Array<ApkData>;
+    allApkLength: number
+  }
 
-}
-
-const HomePage: React.FC<Props> = () => {
+const HomePage: React.FC<Props> = ({apk,allApkLength}) => {
     const states = useSelector(() => controller.states)
-    const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
+    // const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
     const router = useRouter();
-    // const { page } = router.query;
-   
+    states.totalApk = allApkLength
+    states.currentPage=1
     
 
-    const fetchCodeData = async (pageNumber:number) => {
-        console.log('page',pageNumber)
-        const { res, err } = await PremiumApkApi.getAllApk(pageNumber);
-        if (err) {
-            console.log(err);
-            ToastMessage.notifyError("Server Error");
-        }
-        //@ts-ignore
-        states.sourceCode=res.apkAllData
-        setSourceCodes(res.apkAllData)
-        // states.catSubValue=res.catSub
-        states.totalApk = res.apkAllDataLength
-        states.currentPage=1
-    }
-    useEffect(() => {
-            fetchCodeData(1)
-    }, [])
+    // const fetchCodeData = async (pageNumber:number) => {
+    //     console.log('page',pageNumber)
+    //     const { res, err } = await PremiumApkApi.getAllApk(pageNumber);
+    //     if (err) {
+    //         console.log(err);
+    //         ToastMessage.notifyError("Server Error");
+    //     }
+    //     //@ts-ignore
+    //     states.sourceCode=res.apkAllData
+    //     setSourceCodes(res.apkAllData)
+    //     // states.catSubValue=res.catSub
+    //     states.totalApk = res.apkAllDataLength
+    //     states.currentPage=1
+    // }
+    // useEffect(() => {
+    //         fetchCodeData(1)
+    // }, [])
 
     return <>
-        {sourceCodes.length > 0 ? <div>
+        {apk.length > 0 ? <div>
             <Search
-                sourceCodes={sourceCodes} />
+                apk={apk} />
         <Layout
-            sourceCodes={sourceCodes}
+            apk={apk}
         />
         </div>
             :     

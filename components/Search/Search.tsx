@@ -7,10 +7,10 @@ import Link from 'next/link'
 import { PremiumApkApi } from '../../src/API/PremiumApkApi'
 
 interface Props {
-    sourceCodes?: Array<any>
+    apk?: Array<any>
 }
 
-const Search: React.FC<Props> = ({ sourceCodes }) => {
+const Search: React.FC<Props> = ({ apk }) => {
 
     const states = useSelector(() => controller.states)
 

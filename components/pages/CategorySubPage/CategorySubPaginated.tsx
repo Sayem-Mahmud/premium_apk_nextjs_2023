@@ -10,57 +10,70 @@ import { PremiumApkApi } from '../../../src/API/PremiumApkApi'
 import { ToastMessage } from '../../../src/utils/ToastMessage'
 
 interface Props {
+    apk: Array<ApkData>;
+    allApkLength: number,
+    categoryValue: string | string[] ,
+    page: number,
+    subCat:string | string[] 
 }
 
-const CategorySubPaginated: React.FC<Props> = (props) => {
+const CategorySubPaginated: React.FC<Props> = ({ apk, allApkLength, categoryValue, page, subCat }) => {
 
     const states = useSelector(() => controller.states)
-    const [sourceCodes, setSourceCodes] = useState<Array<ApkData>>([]);
-    const router = useRouter();
-    const { page, categorySearch,subCat } = router.query;
+    // const [apk, setApk] = useState<Array<ApkData>>([]);
+    // const router = useRouter();
+    // const { page, categorySearch,subCat } = router.query;
 
-    const fetchCodeData = async (category: string, pageNum: number, subCat:string) => {
-        const { res, err } = await PremiumApkApi.getAllCategorizedApk(category, pageNum,subCat);
-        if (err) {
-            console.log(err);
-            ToastMessage.notifyError("Server Error");
-        }
-        //@ts-ignore
-        setSourceCodes(res?.categorizedApk)
-        states.totalApk = res?.apkAllDataLengthCategorized
+
+    // setApk(res?.categorizedApk)
+        states.totalApk = allApkLength
         // states.catSubValue=res.catSub
-        states.currentPage = pageNum >= 1 ? pageNum : 1
-        states.categoryValue = category
-        states.categorySubValue=subCat
-    }
-    useEffect(() => {
-        if (categorySearch && page && subCat) {
-            console.log('subcatuu',subCat)
-            const categoryString = categorySearch.toString()
-            const pageNum = (parseInt(page.toString()))
-            // if (pageNum >= 1) {
-            //     console.log('hello')
-            //     fetchCodeData(categoryString, pageNum,'')
+        states.currentPage = page >= 1 ? page : 1
+        states.categoryValue =categoryValue.toString()
+        states.categorySubValue=subCat.toString()
+
+    // const fetchCodeData = async (category: string, pageNum: number, subCat:string) => {
+    //     const { res, err } = await PremiumApkApi.getAllCategorizedApk(category, pageNum,subCat);
+    //     if (err) {
+    //         console.log(err);
+    //         ToastMessage.notifyError("Server Error");
+    //     }
+    //     //@ts-ignore
+    //     setApk(res?.categorizedApk)
+    //     states.totalApk = res?.apkAllDataLengthCategorized
+    //     // states.catSubValue=res.catSub
+    //     states.currentPage = pageNum >= 1 ? pageNum : 1
+    //     states.categoryValue = category
+    //     states.categorySubValue=subCat
+    // }
+    // useEffect(() => {
+    //     if (categorySearch && page && subCat) {
+    //         console.log('subcatuu',subCat)
+    //         const categoryString = categorySearch.toString()
+    //         const pageNum = (parseInt(page.toString()))
+    //         // if (pageNum >= 1) {
+    //         //     console.log('hello')
+    //         //     fetchCodeData(categoryString, pageNum,'')
                
-            // }
-            if (pageNum >= 1 && subCat) {
-                console.log('no');
-                fetchCodeData(categoryString, pageNum,subCat.toString())
-            }
-            else {
-                window.location.href = '/';
-            }
+    //         // }
+    //         if (pageNum >= 1 && subCat) {
+    //             console.log('no');
+    //             fetchCodeData(categoryString, pageNum,subCat.toString())
+    //         }
+    //         else {
+    //             window.location.href = '/';
+    //         }
 
-        }
+    //     }
 
-    }, [categorySearch, page, subCat])
+    // }, [categorySearch, page, subCat])
 
     return (
         <>
-            {sourceCodes?.length > 0 ? <div>
+            {apk?.length > 0 ? <div>
                 <Search />
                 <CategoryLayout
-                    sourceCodes={sourceCodes}
+                    apk={apk}
                 />
             </div>
                 :

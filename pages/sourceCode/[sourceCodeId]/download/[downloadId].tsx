@@ -2,15 +2,50 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { controller } from '../../../../src/state/StateController'
 import DownloadPage from '../../../../components/pages/DownloadPage/DownloadPage'
+import { PremiumApkApi } from '../../../../src/API/PremiumApkApi'
+import { GetServerSidePropsContext } from 'next'
+import { ApkData } from '../../../../interfaces/models'
+import { ToastMessage } from '../../../../src/utils/ToastMessage'
 
 interface Props {
+    apk: ApkData
 }
 
-const downloadId: React.FC<Props> = (props) => {
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { query } = context;
+
+    const downloadId = query.downloadId as string;
+
+    if (!downloadId) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
+
+    const { res, err } = await PremiumApkApi.getSingleApk(downloadId);
+
+    if (err) {
+        console.log(err);
+        ToastMessage.notifyError("Server Error");
+    }
+
+    const apk = res.apkOne || null;
+
+    return {
+        props: {
+            apk,
+        },
+    };
+}
+
+const downloadId: React.FC<Props> = ({apk}) => {
 
     const states = useSelector(() => controller.states)
-
-    return <DownloadPage />
+    return <DownloadPage apk={apk} />
 }
 
 export default downloadId

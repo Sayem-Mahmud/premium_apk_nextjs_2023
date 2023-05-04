@@ -7,30 +7,29 @@ import Loader from '../../../../helpers/Loader/Loader'
 import { PremiumApkApi } from '../../../../../src/API/PremiumApkApi'
 
 interface Props {
-    sourceCodeId: string | string[] | undefined
 }
 
-const SourceCodeDetailRightLayout: React.FC<Props> = ({sourceCodeId}) => {
+const SourceCodeDetailRightLayout: React.FC<Props> = () => {
 
     const states = useSelector(() => controller.states)
-    const [catSub,setCatSub]=useState<Array<any>>([])
+    // const [catSub,setCatSub]=useState<Array<any>>([])
 
-    const fetchSingleCodeDetails = async (sourceCodeId: string) => {
-        const { res, err } = await PremiumApkApi.getSingleApk(sourceCodeId);
-        if (err) {
-            console.log(err);
-        }
-        console.log("res", res);
-        // setApk(res.apkOne)
-        // setCatSub(res.catSub)
-    }
+    // const fetchSingleCodeDetails = async (sourceCodeId: string) => {
+    //     const { res, err } = await PremiumApkApi.getSingleApk(sourceCodeId);
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    //     console.log("res", res);
+    //     // setApk(res.apkOne)
+    //     // setCatSub(res.catSub)
+    // }
 
-    useEffect(() => {
-        if (sourceCodeId === undefined) {
-            return
-        }
-        fetchSingleCodeDetails(sourceCodeId as string)
-    }, [sourceCodeId])
+    // useEffect(() => {
+    //     if (sourceCodeId === undefined) {
+    //         return
+    //     }
+    //     fetchSingleCodeDetails(sourceCodeId as string)
+    // }, [sourceCodeId])
 
 
     return (
