@@ -63,38 +63,45 @@ const DownloadPage: React.FC<Props> = ({apk}) => {
     return (
         <>
             {/* <Header /> */}
-            <Search />
-            <div className='flex flex-col container-x justify-center items-center py-5 '>
-                <p>{downloadId}</p>
-                <div>
-                    {states.showData ? (
-                        <div className='flex flex-col gap-10 items-center '>
-                            <div>
-                                <p>Your Download Links</p>
-                            </div>
-                            <div>
-                                {
-                                    apk?.downloadFile?.map((item:any, index:any) => {
-                                        return (
-                                        <div>
-                                         { item?.href &&  <div key={index} className=' my-[10px] flex flex-col gap-5 items-center text-black bg-white border-solid border-2 border-black cursor-pointer '>
-                                                <Link href={item?.href} className='capitalize w-full text-center' >{item.innerText}</Link>
-                                            </div>
-                                                }
-                                            </div>
-                                        )
-                                    })
-                                }
-                                  {apk?.requiredAndroid && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">Required Android:</span> {apk?.requiredAndroid}</span>}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className='text-white rounded-[50%] py-7 px-9 bg-psclightteal'>
-                            <p className='text-xl font-semibold'>{states.seconds}</p>
-                        </div>
-                    )}
-                </div>
+            {apk.message === "No Data" || (apk.downloadFile && apk.downloadFile.length === 0) ? <div className="flex justify-center  m-auto  items-center max-w-[1200px] sm:w-full md:w-[100%] bg-white p-3">
+                <p className="text-psclightblack text-2xl mt-2">No Results Found</p>
             </div>
+                :
+                <>
+                    <Search />
+                    <div className='flex flex-col container-x justify-center items-center py-5 '>
+                        <p>{downloadId}</p>
+                        <div>
+                            {states.showData ? (
+                                <div className='flex flex-col gap-10 items-center '>
+                                    <div>
+                                        <p>Your Download Links</p>
+                                    </div>
+                                    <div>
+                                        {
+                                            apk?.downloadFile?.map((item: any, index: any) => {
+                                                return (
+                                                    <div>
+                                                        {item?.href && <div key={index} className=' my-[10px] flex flex-col gap-5 items-center text-black bg-white border-solid border-2 border-black cursor-pointer '>
+                                                            <Link href={item?.href} className='capitalize w-full text-center' >{item.innerText}</Link>
+                                                        </div>
+                                                        }
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                        {apk?.requiredAndroid && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">Required Android:</span> {apk?.requiredAndroid}</span>}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className='text-white rounded-[50%] py-7 px-9 bg-psclightteal'>
+                                    <p className='text-xl font-semibold'>{states.seconds}</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </>
+            }
         </>
     )
 }

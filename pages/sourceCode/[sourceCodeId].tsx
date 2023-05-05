@@ -23,7 +23,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     }
 
-    const apk = res.apkOne;
+    const apk = res?.apkOne;
+    if (!apk) {
+        return {
+            redirect: {
+              destination: '/',
+              permanent: false,
+            },
+          };
+    }
 
     return {
         props: {

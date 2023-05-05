@@ -33,7 +33,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         ToastMessage.notifyError("Server Error");
     }
 
-    const apk = res.apkOne || null;
+    let apk = res?.apkOne;
+    
+    if (!apk) {
+         apk={message:'No Data'}
+        // return {
+        //     redirect: {
+        //       destination: '/',
+        //       permanent: false,
+        //     },
+        //   };
+    }
 
     return {
         props: {
