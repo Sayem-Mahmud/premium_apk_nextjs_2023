@@ -31,7 +31,7 @@ const CategoryLayout: React.FC<Props> = ({ apk }) => {
                             <>
                                 <div className='flex flex-col gap-4 w-full lg:w-[80%] p-3'>
                                     <div className=''>
-                                        <p className='mt-5 text-xl lg:text-2xl text-psclightblack'>Found Results For "<span>Category:{states.categoryValue}"<span>{states.categorySubValue && <div>Subcategory:"{states.categorySubValue}"</div>}</span></span></p>
+                                        <p className='mt-5 text-xl lg:text-2xl text-psclightblack'>Found Results For <span>Category:"{states.categoryValue}"<span>{states.categorySubValue && <div>Subcategory:"{states.categorySubValue}"</div>}</span></span></p>
                                     </div>
                                     <LeftLayout
                                         apk={apk}
