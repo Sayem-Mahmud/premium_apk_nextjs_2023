@@ -63,7 +63,7 @@ const DownloadPage: React.FC<Props> = ({apk}) => {
     return (
         <>
             {/* <Header /> */}
-            {apk.message === "No Data" || (apk.downloadFile && apk.downloadFile.length === 0) ? <div className="flex justify-center  m-auto  items-center max-w-[1200px] sm:w-full md:w-[100%] bg-white p-3">
+            {apk.message === "No Data" || (apk.downloadFile && apk.downloadFile.length === 0) ? <div className="flex justify-center  m-auto  items-center max-w-[1200px] sm:w-full md:w-[100%]  mt-[30px] mb-[30px] bg-white p-3">
                 <p className="text-psclightblack text-2xl mt-2">No Results Found</p>
             </div>
                 :
