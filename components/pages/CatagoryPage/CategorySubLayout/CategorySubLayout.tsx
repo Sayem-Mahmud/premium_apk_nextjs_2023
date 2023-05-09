@@ -30,8 +30,8 @@ const CategorySubLayout: React.FC<Props> = ({ apk }) => {
                             :
                             <>
                                 <div className='flex flex-col gap-4 w-full lg:w-[80%] p-3'>
-                                    <div className='text-black'>
-                                        <p className='mt-5 text-xl lg:text-2xl text-psclightblack'>Found Results For "<span>Category:{states.categoryValue}"</span></p>
+                                    <div className='text-psclightblack'>
+                                        <p className='mt-5 text-xl lg:text-2xl text-psclightblack'>Found Results For <span>Category:"{states.categoryValue}"</span></p>
                                         {states.categorySubValue && <div>Subcategory:"{states.categorySubValue}"</div>}
                                     </div>
                                     <LeftLayout

@@ -9,6 +9,7 @@ import Search from '../../Search/Search';
 import Layout from './Layout/Layout';
 import Loader from '../../helpers/Loader/Loader';
 import { ToastMessage } from '../../../src/utils/ToastMessage';
+import SearchLayout from '../SearchPage/SearchLayout/SearchLayout';
 
 export const API_ENDPOINT = process.env["NEXT_PUBLIC_API_ENDPOINT"];
 
@@ -62,7 +63,7 @@ const HomePagePaginated: React.FC<Props> = ({apk,allApkLength,page}) => {
     return <>
         {apk?.length > 0 ? <div>
              {/* <Header /> */}
-        <Search apk={apk} />
+            <Search apk={apk} />
         <Layout
             apk={apk}
         />

@@ -41,9 +41,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     if (pageNum >= 1) {
       const pageNumber = pageNum;
       const data = await fetchCodeData(pageNumber);
+
+      let apk= data.apk
+      if (apk && apk.length === 0) {  
+        return {
+          redirect: {
+            destination: '/',
+            permanent: false,
+          },
+        }
+      }
       return {
         props: {
-          apk: data.apk,
+          apk: apk,
           allApkLength: data.allApklength,
           page: data.page,
         },

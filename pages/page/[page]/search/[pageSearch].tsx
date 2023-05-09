@@ -35,9 +35,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       // return { props: {} };
     }
 
+    let apk = res?.apkAllDataSearch
+    if (apk.length===0) {
+      apk = [{
+        message:'No Data'
+      }]
+    }
     return {
       props: {
-        apk: res?.apkAllDataSearch,
+        apk: apk,
         searchValueApkLength: res?.apkAllDataLengthSearch,
         page: pageNum,
         searchValue: searchC

@@ -1,6 +1,8 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // reactStrictMode: true,
+
   images: {
     domains: ['images.pexels.com', 'media.meds.se', 'i.ibb.co', 'lh3.googleusercontent.com', 'graph.facebook.com'], //your-external-link-hostname
     // hostname: ["images.pexels.com"]
