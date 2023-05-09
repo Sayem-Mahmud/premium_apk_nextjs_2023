@@ -99,7 +99,7 @@ export class Jsondata {
         {
             category: "HD Games",
             subcategory: [
-            
+
             ]
         },
         {

@@ -52,6 +52,7 @@ const Search: React.FC<Props> = ({ apk }) => {
                 <div className="searchInputs z-[12]">
                     <div>
                         <input
+                            className='text-black'
                             type="text"
                             placeholder="Search"
                             value={wordEntered}

@@ -78,7 +78,7 @@ const DownloadPage: React.FC<Props> = ({apk}) => {
                                         return (
                                         <div>
                                          { item?.href &&  <div key={index} className=' my-[10px] flex flex-col gap-5 items-center text-black bg-white border-solid border-2 border-black cursor-pointer '>
-                                                <Link href={item?.href} className='capitalize w-full text-center' >{item.innerText}</Link>
+                                                <Link href={item?.href} className='capitalize w-full text-center' target='_blank' >{item.innerText}</Link>
                                             </div>
                                                 }
                                             </div>

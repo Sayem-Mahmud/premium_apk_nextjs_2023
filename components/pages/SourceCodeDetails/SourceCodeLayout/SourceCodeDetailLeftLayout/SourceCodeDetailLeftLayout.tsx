@@ -73,7 +73,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({apk, sourceCodeId }) => {
                         </div>
                         <div className='px-4 py-2 w-[100%] md:w-[75%]'>
                             <div className='flex flex-col gap-y-2'>
-                                <span className="text-xl text-['black'] font-bold ">{apk?.title && apk?.title}</span>
+                                <span className="text-xl text-black font-bold ">{apk?.title && apk?.title}</span>
                                 {/* {apk?.categories.split(',').map((cat:any)=>{return ()})} */}
                                 <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Catagories:</span> {apk?.categories && apk?.categories}</span>
                                 <span className="text-[13px] text-[#8F8F8F]"><span className="text-[#0e0d0d]">Created at:</span> {apk?.created && apk?.created}</span>
@@ -97,7 +97,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({apk, sourceCodeId }) => {
                             return (
                                 <>
                                     {(!text.includes('<img') || !text.includes('src=')) &&
-                                        < p className='mt-[10px] leading-6' > {text}</p>
+                                        < p className='mt-[10px] leading-6 text-black' > {text}</p>
                                     }
                                 </>
                             )
