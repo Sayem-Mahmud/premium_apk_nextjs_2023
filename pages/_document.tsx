@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
         <title>Premium APK Downloader</title>
-          <link rel="icon" href="https://i.ibb.co/H7Yh75R/st-small-507x507-pad-600x600-f8f8f8.jpg" />
+          <link rel="icon" href="https://i.ibb.co/wcFWknP/Best-APK-Download-Sites-for-2020.png" />
           {/* Poppins  */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
