@@ -65,7 +65,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({apk, sourceCodeId }) => {
         // </div>
         <>
             {apk ?
-                <div className=' rounded mt-[20px] bg-[#f9f9f9] flex flex-col  pl-[5px]' style={{padding:'0px 20px'}}>
+                <div className=' rounded my-[20px] bg-[#f9f9f9] flex flex-col  pl-[5px]' style={{padding:'0px 20px 8px 20px'}}>
                     <div className="flex flex-col md:flex-row gap-y-4 " style={{columnGap:'25px'}}
                     >
                         <div className='overflow-hidden cursor-pointer rounded w-[100%] md:w-[20%]'>
@@ -117,7 +117,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({apk, sourceCodeId }) => {
 
                 <div className='flex flex-col gap-y-3'>
                 <div style={{ margin: "auto", marginTop: '20px', height:'50px', width:'50%',marginBottom: '20px'}} className='bg-psclightteal text-center rounded hover:bg-pscblack'>
-                        <Link className='text-white flex justify-center text-[20px] h-full items-center md:text-[35px] hover:bg-pscblack' href={`/sourceCode/${sourceCodeId}/download/${sourceCodeId}`}>Download Now</Link>
+                        <Link className='text-white flex justify-center text-[14px] sm:text-[18px] h-full items-center md:text-[30px] hover:bg-pscblack' href={`/sourceCode/${sourceCodeId}/download/${sourceCodeId}`}>Download Now</Link>
                     </div>
                         {apk?.version && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">Version:</span> {apk?.version}</span>}
                         {apk?.fileSize && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">File Size:</span> {apk?.fileSize}</span>}
