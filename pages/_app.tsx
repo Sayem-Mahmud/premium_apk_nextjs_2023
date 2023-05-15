@@ -8,6 +8,7 @@ import Header from "../components/shared/Header/Header";
 import Footer from "../components/shared/Footer/Footer";
 import { ToastContainer } from "react-toastify";
 import NextNProgress from "nextjs-progressbar";
+import ScrollToTop from "../components/helpers/ScrollToTop/ScrollToTop";
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
@@ -49,6 +50,7 @@ export default function MyApp(props: AppProps) {
           />
           <Component {...pageProps} />
         </React.Fragment>
+        <ScrollToTop />
         <Footer />
       </Provider>
     </ThemeProvider>

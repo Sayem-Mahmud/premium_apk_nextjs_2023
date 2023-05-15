@@ -1,0 +1,56 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.top-btn {
+    font-size: 2.4rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: #fff;
+    background-color: #00AD7F;
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.top-btn svg {
+    animation: gototop 1.2s linear infinite alternate-reverse;
+}
+
+@keyframes gototop {
+    0% {
+        transform: translateY(-0.5rem);
+    }
+
+    100% {
+        transform: translateY(0.6rem);
+    }
+}
+
+
+/* Mobile device */
+@media only screen and (max-width:688px) {
+    .top-btn {
+        right: 10%;
+
+    }
+}
+
+
+/* Tab */
+@media only screen and (min-width: 688px) and (max-width: 992px) {
+    .top-btn {
+        right: 10%;
+
+    }
+}
