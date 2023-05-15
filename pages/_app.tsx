@@ -25,7 +25,7 @@ export default function MyApp(props: AppProps) {
       jssStyles.parentElement!.removeChild(jssStyles);
     }
   }, []);
-  
+
   useEffect(() => {
     const handleRouteChangeComplete = () => {
       if ('scrollRestoration' in window.history) {
@@ -51,7 +51,7 @@ export default function MyApp(props: AppProps) {
             color="#2E4F4F"
             startPosition={0.3}
             stopDelayMs={200}
-            height={9}
+            height={4}
             showOnShallow={true}
           />
         <ToastContainer
