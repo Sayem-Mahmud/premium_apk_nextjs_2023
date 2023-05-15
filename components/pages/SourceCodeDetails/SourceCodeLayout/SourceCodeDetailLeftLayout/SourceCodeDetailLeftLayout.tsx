@@ -69,7 +69,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({apk, sourceCodeId }) => {
                     <div className="flex flex-col md:flex-row gap-y-4 " style={{columnGap:'25px'}}
                     >
                         <div className='overflow-hidden cursor-pointer rounded w-[100%] md:w-[20%]'>
-                            <img src={apk?.imgSrc} alt="" className='mt-[10px] bg-gray-400 w-[50%] m-auto md:w-52 object-cover scale-[1] hover:scale-[1.3] transition-all duration-300' />
+                            <img src={apk?.imgSrc} alt="" className='mt-[10px] bg-gray-400 w-[50%] m-auto md:w-52 object-cover scale-[1] hover:scale-[1.1] transition-all duration-300' />
                         </div>
                         <div className='px-4 py-2 w-[100%] md:w-[75%]'>
                             <div className='flex flex-col gap-y-2'>
