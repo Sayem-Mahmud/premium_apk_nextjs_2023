@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/globals.css";
 import { AppProps } from "next/app";
 import { Provider } from "react-redux";
@@ -9,9 +9,11 @@ import Footer from "../components/shared/Footer/Footer";
 import { ToastContainer } from "react-toastify";
 import NextNProgress from "nextjs-progressbar";
 import ScrollToTop from "../components/helpers/ScrollToTop/ScrollToTop";
+import { useRouter } from "next/router";
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
+  const router = useRouter();
   //   const states = useSelector(() => controller.states);
 
   
@@ -23,6 +25,21 @@ export default function MyApp(props: AppProps) {
       jssStyles.parentElement!.removeChild(jssStyles);
     }
   }, []);
+  
+  useEffect(() => {
+    const handleRouteChangeComplete = () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChangeComplete);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChangeComplete);
+    };
+  }, []);
+
 
 
   return (
