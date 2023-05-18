@@ -30,7 +30,7 @@ const BigSourceCodeCard: React.FC<Props> = ({ item }) => {
                             </div>
                             <div>
                             {/* <span className="text-xl text-[#00AD7F] font-medium">{item.categories}</span> */}
-                                <p title={item.title} className='cursor-pointer text-md mt-[15px] text-[#121212] '>{item.allText  && (!item.allText[1].includes('<img') || !item.allText[1].includes('src=')) && item.allText[1] }</p>
+                                <p title={item.title} className='cursor-pointer text-md mt-[15px] text-[#121212] '>{item.allText  && (!item.allText[0].includes('<img') || !item.allText[0].includes('src=')) && item.allText[0] }</p>
                                 <div className='mt-3'>
                                     {/* <a href={item.url} target='_blank' className="text-[13px] text-[#8F8F8F] hover:text-ecodarkgreen">Read the full blog..</a> */}
                                 </div>

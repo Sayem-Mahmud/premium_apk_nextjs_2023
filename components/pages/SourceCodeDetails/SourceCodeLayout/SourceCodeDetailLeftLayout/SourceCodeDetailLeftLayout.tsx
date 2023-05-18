@@ -80,7 +80,7 @@ const SourceCodeDetailLeftLayout: React.FC<Props> = ({apk, sourceCodeId }) => {
                             </div>
                             <div>
                                 {/* <span className="text-xl text-[#00AD7F] font-medium">{apk.categories}</span> */}
-                                <p title={apk?.title} className='cursor-pointer text-md text-[#121212] '>{apk.allText  && (!apk.allText[1].includes('<img') || !apk.allText[1].includes('src=')) && apk.allText[1]}</p>
+                                <p title={apk?.title} className='cursor-pointer text-md text-[#121212] '>{apk.allText  && (!apk.allText[0].includes('<img') || !apk.allText[0].includes('src=')) && apk.allText[0]}</p>
                                 <div className='mt-3'>
                                     {/* <a href={apk.url} target='_blank' className="text-[13px] text-[#8F8F8F] hover:text-ecodarkgreen">Read the full blog..</a> */}
                                 </div>
