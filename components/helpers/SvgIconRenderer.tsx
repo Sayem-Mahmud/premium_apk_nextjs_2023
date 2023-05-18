@@ -2,19 +2,25 @@ import React from 'react';
 
 
 interface Props {
-    size?: number,
-    path: string,
+    height?: string
+    width?: string
+    size?: number
+    path?: string
+    fill?: string
     style?: React.CSSProperties
+    pathFill?: string
+    className?: string
+    viewBox?: string
 }
 
 
 const SvgIconRenderer: React.FC<Props> = (props) => {
     // const {} = useActions()
     // const {} = useAppState()
-    const { size = 24, path, style } = props;
+    const { width, height, path, style, fill, pathFill, className, viewBox } = props;
 
-    return <svg style={{ width: size, height: size, ...style }} viewBox="0 0 24 24">
-        <path fill={style?.color ?? "#FFF"}
+    return <svg className={className} style={{ width: width, height: height, ...style }} fill={fill} viewBox={viewBox}>
+        <path fill={pathFill ?? "#FFF"}
             d={path} />
     </svg>
 };

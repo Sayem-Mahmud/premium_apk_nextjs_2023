@@ -52,7 +52,7 @@ const Search: React.FC<Props> = ({ apk }) => {
                 <div className="searchInputs z-[12]">
                     <div>
                         <input
-                            className='text-black'
+                            className="text-pscblack"
                             type="text"
                             placeholder="Search"
                             value={wordEntered}
@@ -61,18 +61,18 @@ const Search: React.FC<Props> = ({ apk }) => {
                         />
                     </div>
                     <div className="searchIcon">
-                        {wordEntered?.length !== 0 &&
-                            // ? (
-                            // <div >
-                            //     <SvgIconRenderer
-                            //         width="24px"
-                            //         height="24px"
-                            //         viewBox="0 0 24 24"
-                            //         path={SvgPaths?.search}
-                            //         pathFill={"#000"}
-                            //     />
-                            // </div>
-                            // ) :
+                        {wordEntered?.length === 0
+                            ? (
+                                <div >
+                                    <SvgIconRenderer
+                                        width="24px"
+                                        height="24px"
+                                        viewBox="0 0 24 24"
+                                        path={SvgPaths?.search}
+                                        pathFill={"#000"}
+                                    />
+                                </div>
+                            ) :
                             (
                                 <div onClick={clearInput} className="cursor-pointer">
                                     <SvgIconRenderer
@@ -87,27 +87,6 @@ const Search: React.FC<Props> = ({ apk }) => {
                     </div>
 
                 </div>
-                {/* <div className='absolute inset-0 top-[3.4rem] z-20 rounded-sm'>
-                    {filteredData?.length != 0 && (
-                        <div className="dataResult">
-                            {filteredData.slice(0, 15).map((item, key) => {
-                                return (
-                                    <Link className="dataItem" href={item.link} target="_blank">
-                                        <p title={item.title} className='whitespace-nowrap overflow-hidden text-ellipsis'>{item.title} </p>
-                                    </Link>
-                                );
-                            })}
-                        </div>
-                    )}
-                </div>
-                {
-                    filteredData?.length !== 0 && (
-                        <div
-                            className="overlay"
-                            onClick={() => { offOverlay() }}
-                        />
-                    )
-                } */}
 
             </div>
         </div>
