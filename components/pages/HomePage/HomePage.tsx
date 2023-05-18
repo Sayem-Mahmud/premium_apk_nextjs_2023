@@ -44,7 +44,7 @@ const HomePage: React.FC<Props> = ({apk,allApkLength}) => {
     // }, [])
 
     return <>
-        {apk.length > 0 ? <div>
+        {apk?.length > 0 ? <div>
             <Search
                 apk={apk} />
         <Layout
