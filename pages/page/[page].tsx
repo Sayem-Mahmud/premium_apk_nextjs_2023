@@ -7,6 +7,7 @@ import { ApkData } from "../../interfaces/models";
 import HomePagePaginated from "../../components/pages/HomePage/HomePagePaginated";
 import { PremiumApkApi } from "../../src/API/PremiumApkApi";
 import { ToastMessage } from "../../src/utils/ToastMessage";
+import AllSeos from "../../components/shared/AllSeos";
 // import { useRouter } from "next/router";
 
 
@@ -81,7 +82,10 @@ const index: React.FC<Props> = ({apk,allApkLength,page}) => {
     const states = useSelector(() => controller.states);
     // const router = useRouter();
     // const { page} = router.query;
-  return <HomePagePaginated apk={apk} allApkLength={allApkLength} page={page} />
+  return (<>
+    <AllSeos />
+    <HomePagePaginated apk={apk} allApkLength={allApkLength} page={page} />
+    </>)
 };
 
 export default index;

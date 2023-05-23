@@ -6,6 +6,7 @@ import { PremiumApkApi } from '../../../../src/API/PremiumApkApi'
 import { GetServerSidePropsContext } from 'next'
 import { ApkData } from '../../../../interfaces/models'
 import { ToastMessage } from '../../../../src/utils/ToastMessage'
+import AllSeos from '../../../../components/shared/AllSeos'
 
 interface Props {
     apk: ApkData
@@ -55,7 +56,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 const downloadId: React.FC<Props> = ({apk}) => {
 
     const states = useSelector(() => controller.states)
-    return <DownloadPage apk={apk} />
+    return(<>
+        <AllSeos type={`${apk.title} ${apk?.categories}`} />
+        <DownloadPage apk={apk} />
+        </>)
 }
 
 export default downloadId

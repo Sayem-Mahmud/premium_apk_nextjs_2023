@@ -3,6 +3,7 @@ import CategoryPage from "../../components/pages/CatagoryPage/CategoryPage";
 import { ApkData } from "../../interfaces/models";
 import { PremiumApkApi } from "../../src/API/PremiumApkApi";
 import { ToastMessage } from "../../src/utils/ToastMessage";
+import AllSeos from "../../components/shared/AllSeos";
 
 
 interface Props {
@@ -47,7 +48,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 
 const index: React.FC<Props> = ({apk,categoryValue,allApkLength}) => {
-    return <CategoryPage apk={apk} categoryValue={categoryValue} allApkLength={allApkLength}  />
+    return (
+        <>
+        <AllSeos type={categoryValue.toString()}/>
+        <CategoryPage apk={apk} categoryValue={categoryValue} allApkLength={allApkLength} /></>)
 };
 
 export default index;

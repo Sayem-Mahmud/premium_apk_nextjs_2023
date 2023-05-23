@@ -4,6 +4,7 @@ import { ApkData } from "../../../../interfaces/models";
 import { PremiumApkApi } from "../../../../src/API/PremiumApkApi";
 // import dynamic from "next/dynamic";
 import CategorySubPage from "../../../../components/pages/CategorySubPage/CatagorySubPage";
+import AllSeos from "../../../../components/shared/AllSeos";
 // const CategorySubPage = dynamic(
 //   () => import("../../../../components/pages/CategorySubPage/CatagorySubPage"),
 //   { ssr: false }
@@ -57,8 +58,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const IndexPage: React.FC<Props> = ({ apk, allApkLength, categoryValue, subCat }) => {
   return (
+    <>
+      <AllSeos type={`${categoryValue} | ${subCat}`}/>
     <CategorySubPage apk={apk} allApkLength={allApkLength} categoryValue={categoryValue} subCat={subCat} />
-  );
+  </>);
 };
 
 export default IndexPage;

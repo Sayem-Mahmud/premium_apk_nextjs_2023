@@ -3,6 +3,7 @@ import CategoryPagePaginated from "../../../../components/pages/CatagoryPage/Cat
 import { ApkData } from "../../../../interfaces/models";
 import { PremiumApkApi } from "../../../../src/API/PremiumApkApi";
 import { ToastMessage } from "../../../../src/utils/ToastMessage";
+import AllSeos from "../../../../components/shared/AllSeos";
 
 
 interface Props {
@@ -61,7 +62,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 
 const index: React.FC<Props> = ({ apk,allApkLength,categoryValue,page }) => {
-    return <CategoryPagePaginated apk={apk} allApkLength={allApkLength} categoryValue={categoryValue} page={page } />
-};
+    return (<>
+      <AllSeos type={categoryValue.toString()}/>
+    <CategoryPagePaginated apk={apk} allApkLength={allApkLength} categoryValue={categoryValue} page={page } /></>
+)};
 
 export default index;

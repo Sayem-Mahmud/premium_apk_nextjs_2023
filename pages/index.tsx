@@ -5,6 +5,7 @@ import { GetServerSidePropsContext } from "next";
 import { PremiumApkApi } from "../src/API/PremiumApkApi";
 import { ToastMessage } from "../src/utils/ToastMessage";
 import { ApkData } from "../interfaces/models";
+import AllSeos from "../components/shared/AllSeos";
 
 interface Props {
   apk: Array<ApkData>;
@@ -50,7 +51,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const index : React.FC<Props> = ({apk,allApkLength}) => {
   const states = useSelector(() => controller.states);
-  return <HomePage apk={apk} allApkLength={allApkLength} />
-};
+  return (<>
+    <AllSeos />
+    <HomePage apk={apk} allApkLength={allApkLength} />
+</>)};
 
 export default index;

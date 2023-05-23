@@ -6,6 +6,7 @@ import { PremiumApkApi } from '../../src/API/PremiumApkApi';
 import { GetServerSidePropsContext } from 'next';
 import { ApkData } from '../../interfaces/models';
 import { ToastMessage } from '../../src/utils/ToastMessage';
+import AllSeos from '../../components/shared/AllSeos';
 
 interface Props {
     apk: ApkData
@@ -45,7 +46,9 @@ const sourceCodeId: React.FC<Props> = ({apk,sourceCodeId}) => {
 
     const states = useSelector(() => controller.states)
 
-    return <SourceCodeDetails apk={apk} sourceCodeId={sourceCodeId}   />
-}
+    return(<>
+        <AllSeos type={`${apk.title} ${apk?.categories}`} />
+        <SourceCodeDetails apk={apk} sourceCodeId={sourceCodeId} />
+</>)}
 
 export default sourceCodeId;

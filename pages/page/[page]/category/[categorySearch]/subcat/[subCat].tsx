@@ -7,6 +7,7 @@ import CategorySubPaginated from "../../../../../../components/pages/CategorySub
 import { ApkData } from "../../../../../../interfaces/models";
 import { ToastMessage } from "../../../../../../src/utils/ToastMessage";
 import { PremiumApkApi } from "../../../../../../src/API/PremiumApkApi";
+import AllSeos from "../../../../../../components/shared/AllSeos";
 // import dynamic from "next/dynamic";
 
 interface Props {
@@ -81,7 +82,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 const Index: React.FC<Props> = ({ apk, allApkLength, categoryValue, page, subCat }) => {
-    return <CategorySubPaginated apk={apk} allApkLength={allApkLength} categoryValue={categoryValue} page={page} subCat={subCat} />
+    return (<>
+        <AllSeos type={categoryValue.toString()} /><CategorySubPaginated apk={apk} allApkLength={allApkLength} categoryValue={categoryValue} page={page} subCat={subCat} />
+    </>)
 };
 
 export default Index;

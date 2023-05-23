@@ -5,6 +5,7 @@ import { GetServerSidePropsContext } from "next";
 import { PremiumApkApi } from "../../../../src/API/PremiumApkApi";
 import { ToastMessage } from "../../../../src/utils/ToastMessage";
 import { ApkData } from "../../../../interfaces/models";
+import AllSeos from "../../../../components/shared/AllSeos";
 
 interface Props {
   apk: Array<ApkData>;
@@ -66,7 +67,10 @@ const index: React.FC<Props> = ({apk,searchValueApkLength,searchValue,page}) => 
     const states = useSelector(() => controller.states);
     // const router = useRouter();
     // const { page} = router.query;
-  return <SearchPagePaginated apk={apk} searchValueApkLength={searchValueApkLength} page={page} searchValue={searchValue} />
+  return(<>
+    <AllSeos type={searchValue.toString()}/>
+  <SearchPagePaginated apk={apk} searchValueApkLength={searchValueApkLength} page={page} searchValue={searchValue} />
+  </>)
 };
 
 export default index;

@@ -7,6 +7,7 @@ import { ApkData } from "../../interfaces/models";
 import { PremiumApkApi } from "../../src/API/PremiumApkApi";
 import { GetServerSidePropsContext } from "next";
 import { ToastMessage } from "../../src/utils/ToastMessage";
+import AllSeos from "../../components/shared/AllSeos";
 // import { useRouter } from "next/router";
 
 interface Props {
@@ -54,7 +55,8 @@ const index : React.FC<Props> = ({apk,searchValue,searchValueApkLength}) => {
     // const router = useRouter();
     // const { page} = router.query;
  
-  return <SearchPage apk={apk} searchValue={searchValue} searchValueApkLength={searchValueApkLength} />
-};
+  return (<>
+    <AllSeos type={searchValue.toString()}/><SearchPage apk={apk} searchValue={searchValue} searchValueApkLength={searchValueApkLength} />
+</>)};
 
 export default index;
