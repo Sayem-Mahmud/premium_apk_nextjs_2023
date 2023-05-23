@@ -46,7 +46,7 @@ const AllSeos: React.FC<Props> = (props) => {
                 <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/wcFWknP/Best-APK-Download-Sites-for-2020.png" />
                 <link rel="manifest" href="/site.webmanifest" />
                 <meta name="keywords" content={getKeywords(25).join(",")} />
-                <meta name="application-name" content='All Hustle.xyz' />
+                <meta name="application-name" content='Premium APK.xyz' />
                 {/* <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:label1" content="Est. reading time" />
                 <meta name="twitter:data1" content="5 minutes" />
