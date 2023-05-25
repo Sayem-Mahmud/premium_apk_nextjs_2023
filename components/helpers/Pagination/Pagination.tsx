@@ -132,21 +132,18 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
                 </p>
               </div>}
           </div>
-          <div className="flex flex-row gap-x-[10px] text-[#616161]">
-            <img
-              src="/images/Right.svg"
-              className={`cursor-pointer ${currentPage === 1 && "invisible"}`}
+          <div className="flex flex-wrap gap-x-[5px] gap-y-[5px] text-white h-[32px]">
+            <div
+              className={`cursor-pointer ${currentPage === 1 && "invisible"} rounded-[3px] bg-black p-[5px]`}
               onClick={() => {
                 setClicked(0)
                 handlePageClick(currentPage - 1)
                 // pageChange(selectedPage - 1, selectedDta - 1);
               }}
-            />
-            <img
-              src="/images/Left.svg"
+            >PREV</div>
+            <div
               className={`cursor-pointer ${
-                currentPage === pageCount && "invisible"
-              }`}
+                currentPage === pageCount && "invisible"} rounded-[3px] bg-black p-[5px]`}
               onClick={() => {
                 if (currentPage == 1) {
                   setClicked(1)
@@ -154,7 +151,7 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
                 handlePageClick(currentPage + 1)
                 // pageChange(selectedPage + 1, selectedDta + 1);
               }}
-            />
+            >NEXT</div>
           </div>
           {/* <div
             onClick={() => {
