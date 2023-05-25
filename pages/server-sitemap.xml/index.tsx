@@ -2,13 +2,12 @@ import { getServerSideSitemapLegacy } from "next-sitemap";
 import { PremiumApkApi } from "../../src/API/PremiumApkApi";
 
 export const getServerSideProps = async (ctx:any) => {
-  let posts = await fetch("http://localhost:8000/apks/findAllApk?page=1");
   const {res,err}= await PremiumApkApi.getAllApk(1)
   // posts = await posts.json();
   console.log('res', res.apkAll);
   //@ts-ignore
   const newsSitemaps = res.apkAll.map((item:any) => ({
-    loc: `http://localhost:3000/sourceCode/${item._id}`,
+    loc: `https://premium-apk-nextjs-2023.vercel.app/sourceCode/${item._id}`,
     lastmod: new Date().toISOString(),
   }));
 

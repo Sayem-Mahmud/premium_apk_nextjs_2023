@@ -1,5 +1,5 @@
 // @type { import('next-sitemap').IConfig }
-const siteUrl = 'http://localhost:3000/'
+const siteUrl = 'https://premium-apk-nextjs-2023.vercel.app'
 
 module.exports = {
     siteUrl,
@@ -14,8 +14,8 @@ module.exports = {
             { userAgent: "*", allow: "/" },
         ],
         additionalSitemaps: [
-            `${siteUrl}sitemap.xml`,
-            `${siteUrl}server-sitemap.xml`,
+            `${siteUrl}/sitemap.xml`,
+            `${siteUrl}/server-sitemap.xml`,
         ],
     },
 };
