@@ -83,7 +83,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Index: React.FC<Props> = ({ apk, allApkLength, categoryValue, page, subCat }) => {
     return (<>
-        <AllSeos type={categoryValue.toString()} /><CategorySubPaginated apk={apk} allApkLength={allApkLength} categoryValue={categoryValue} page={page} subCat={subCat} />
+        <AllSeos type={`${categoryValue.toString()} | ${subCat.toString()}`} />
+        <CategorySubPaginated apk={apk} allApkLength={allApkLength} categoryValue={categoryValue} page={page} subCat={subCat} />
     </>)
 };
 

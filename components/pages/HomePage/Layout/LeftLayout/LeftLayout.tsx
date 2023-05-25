@@ -6,6 +6,7 @@ import ReactPaginate from 'react-paginate';
 import { ApkData } from '../../../../../interfaces/models';
 import Loader from '../../../../helpers/Loader/Loader';
 import { useRouter } from 'next/router';
+import Pagination from '../../../../helpers/Pagination/Pagination';
 
 interface Props {
   apk: Array<ApkData>;
@@ -57,7 +58,7 @@ const LeftLayout: React.FC<Props> = ({ apk }) => {
             })}
           </div>
           <div className='my-10'>
-            <ReactPaginate
+            {/* <ReactPaginate
               breakLabel='...'
               breakLinkClassName={'pageNumber'}
               pageRangeDisplayed={2}
@@ -74,7 +75,8 @@ const LeftLayout: React.FC<Props> = ({ apk }) => {
               activeLinkClassName={'active'}
               disabledLinkClassName={'disable'}
               forcePage={activePage-1} // Remove this line
-            />
+            /> */}
+             <Pagination pageCount={pageCount} currentPage={states.currentPage} />
           </div>
         </>
       ) : (
