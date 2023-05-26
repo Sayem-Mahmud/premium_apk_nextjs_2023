@@ -77,7 +77,7 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
     <div>
     
       {showPagination && (
-        <div className=" gap-x-[50px] h-[48px] flex border-t-[1px] mt-[20px] border-[#C0C0C0] items-center">
+        <div className=" gap-x-[7px] md:gap-x-[50px] h-[48px] flex border-t-[1px] mt-[20px] border-[#C0C0C0] items-center">
       
           {/* <div className="flex-1 text-center"> */}
           <div className="flex flex-row">
@@ -89,7 +89,7 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
                 </p>
                 <p>&nbsp;&nbsp;......&nbsp;&nbsp;</p>
               </div>}
-            <div className="flex flex-row gap-x-[20px] justify-center  m-auto h-full">
+            <div className="flex flex-row gap-x-[8px] md:gap-x-[20px] justify-center  m-auto h-full">
               {showPaginateNumberArray
                 ?.slice(arrayStart, arrayEnd)
                 // ?.slice(0, 2)
