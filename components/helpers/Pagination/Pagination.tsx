@@ -84,7 +84,7 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
           <div className="flex flex-row">
           <div className="flex flex-row gap-x-[7px] md:gap-x-[50px]">
           <div
-             className={`cursor-pointer ${currentPage === 1 && "hidden"} rounded-[3px] text-white bg-black p-[5px]`}
+             className={`cursor-pointer ${currentPage === 1 && "hidden"} rounded-[3px] text-white  bg-black p-[5px]`}
              onClick={() => {
               setClicked(0)
               handlePageClick(currentPage - 1)
@@ -153,7 +153,7 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
               }}
             >PREV</div> */}
            <div
-              className={`cursor-pointer ${currentPage === pageCount && "invisible"} rounded-[3px] bg-black p-[5px]`}
+              className={`cursor-pointer ${currentPage === pageCount && "invisible"} rounded-[3px] text-white bg-black p-[5px]`}
                onClick={() => {
                 if (currentPage == 1) {
                 setClicked(1)
