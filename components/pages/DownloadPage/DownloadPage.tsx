@@ -15,63 +15,53 @@ interface Props {
 
 const DownloadPage: React.FC<Props> = ({apk}) => {
 
-    const states = useSelector(() => controller.states)
-    const router = useRouter();
-    const { downloadId } = router.query;
+       const states = useSelector(() => controller.states)
 
-    // const [apk, setApk] = useState<any>(null)
-
-    // const fetchSingleCodeDetails = async (downloadId: string) => {
-    //     const { res, err } = await PremiumApkApi.getSingleApk(downloadId);
-    //     if (err) {
-    //         console.log(err);
-    //         ToastMessage.notifyError("Server Error");
-    //     }
-    //     console.log("resCode", res);
-    //     setApk(res.apkOne)
-    // }
-
-    // const splitUrlName = (url: string) => {
-    //     console.log("🚀 ~ file: DownloadPage.tsx:30 ~ splitUrlName ~ url:", url)
-
-    //     let domain = url.split("://")[1]; // get the domain by splitting at "://"
-    //     if (domain.startsWith("www.")) {
-    //         domain = domain.substring(4); // remove "www." if it exists
-    //     }
-    //     const parts = domain.split("."); // split at the first dot
-    //     const result = parts[0]; // get the first part
-    //     console.log(result); // prints "workupload"
-    //     return result
-    // }
-
-
-    // useEffect(() => {
-    //     if (downloadId === undefined) {
-    //         return
-    //     }
-    //     fetchSingleCodeDetails(downloadId as string)
-    // }, [downloadId])
+    const [seconds, setSeconds] = useState(10);
+    const [showData, setShowData] = useState(false);
 
     useEffect(() => {
-        if (states.seconds > 0) {
-            setTimeout(() => controller.setState({ seconds: states.seconds - 1 }), 1000);
-        } else {
-            controller.setState({ showData: true });
+        const timerId = setInterval(() => {
+            setSeconds((prevSeconds: any) => prevSeconds - 1);
+        }, 1000);
+
+        return () => {
+            clearInterval(timerId);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (seconds <= 0) {
+            setShowData(true);
         }
-    }, [states.seconds]);
+    }, [seconds]);
+
+
+    // const splitUrlName = useMemo(() => {
+    //     return (url: string) => {
+    //         let domain = url.split("://")[1];
+    //         if (domain.startsWith("www.")) {
+    //             domain = domain.substring(4);
+    //         }
+    //         const parts = domain.split(".");
+    //         const result = parts[0];
+    //         return result;
+    //     };
+    // }, []);
+
+
 
     return (
         <>
-            {/* <Header /> */}
             <Search />
-            <div className='flex flex-col container-x justify-center items-center py-5 '>
-                <p className='text-black'>{downloadId}</p>
-                <div>
-                    {states.showData ? (
-                        <div className='flex flex-col gap-10 items-center '>
-                            <div>
+            <div className='my-5'>
+                <div className='flex flex-col container-x justify-center items-center py-10 gap-10'>
+                    {showData ? (
+                        <div className='h-[70vh] '>
+                            <div className='flex justify-center items-center text-xl lg:text-2xl text-pscblack text-center'>
                                 <p>Your Download Links</p>
                             </div>
+                            <div className='flex flex-col gap-5'>
                             <div>
                                 {
                                     apk?.downloadFile?.map((item:any, index:any) => {
@@ -87,50 +77,22 @@ const DownloadPage: React.FC<Props> = ({apk}) => {
                                 }
                                   {apk?.requiredAndroid && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">Required Android:</span> {apk?.requiredAndroid}</span>}
                             </div>
+                            </div>
+
                         </div>
+
                     ) : (
-                        <div className='text-white rounded-[50%] py-7 px-9 bg-psclightteal'>
-                            <p className='text-xl font-semibold'>{states.seconds}</p>
+                        <div className='flex flex-col container-x justify-start items-center py-10 gap-10 h-[70vh]'>
+                            <div className='flex justify-center items-center text-xl lg:text-2xl text-pscblack text-center'>
+                                <p>Your Download Links Are Getting Ready!</p>
+                            </div>
+                            <div className='text-white rounded-[50%] py-7 px-9 bg-psclightteal'>
+                                <p className='text-xl font-semibold'>{seconds}</p>
+                            </div>
                         </div>
                     )}
                 </div>
             </div>
-                {/* :
-                <>
-                    <Search />
-                    <div className='flex flex-col container-x justify-center items-center py-5 '>
-                        <p>{downloadId}</p>
-                        <div>
-                            {states.showData ? (
-                                <div className='flex flex-col gap-10 items-center '>
-                                    <div>
-                                        <p>Your Download Links</p>
-                                    </div>
-                                    <div>
-                                        {
-                                            apk?.downloadFile?.map((item: any, index: any) => {
-                                                return (
-                                                    <div>
-                                                        {item?.href && <div key={index} className=' my-[10px] flex flex-col gap-5 items-center text-black bg-white border-solid border-2 border-black cursor-pointer '>
-                                                            <Link href={item?.href} className='capitalize w-full text-center' >{item.innerText}</Link>
-                                                        </div>
-                                                        }
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                        {apk?.requiredAndroid && <span className="text-[20px] text-[#8F8F8F]"><span className="text-[#dc0101]">Required Android:</span> {apk?.requiredAndroid}</span>}
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className='text-white rounded-[50%] py-7 px-9 bg-psclightteal'>
-                                    <p className='text-xl font-semibold'>{states.seconds}</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </> */}
-            {/* } */}
         </>
     )
 }

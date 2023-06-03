@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import { controller } from '../../../../src/state/StateController'
 import DownloadPage from '../../../../components/pages/DownloadPage/DownloadPage'
@@ -56,6 +56,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 const downloadId: React.FC<Props> = ({apk}) => {
 
     const states = useSelector(() => controller.states)
+    useEffect(() => {
+        controller.setState({ seconds: 10 })
+    },[])
     return(<>
         <AllSeos type={`${apk.title} ${apk?.categories}`} />
         <DownloadPage apk={apk} />
