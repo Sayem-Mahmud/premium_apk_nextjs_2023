@@ -1,4 +1,4 @@
-import { IResponseApk, IResponseApkCategorized, IResponseApkSearch, IResponseSingleApk } from "../../interfaces/response";
+import { IResponseApk, IResponseApkCategorized, IResponseApkSearch, IResponseSingleApk, IResponseSiteMapApk } from "../../interfaces/response";
 import { callFetch } from "../utils/CallFetch";
 
 
@@ -36,7 +36,7 @@ export class PremiumApkApi {
   // }
 
 
-  static async getAllApk(pageNumber:number): Promise<IResponseApk> {
+  static async getAllApk(pageNumber: number): Promise<IResponseApk> {
 
     var requestOptions = {
       method: 'GET',
@@ -44,6 +44,16 @@ export class PremiumApkApi {
     };
 
     return await callFetch(`${API_ENDPOINT}/apks/findAllApk?page=${pageNumber}`, requestOptions)
+  }
+
+  static async getAllApkSiteMap(): Promise<IResponseSiteMapApk> {
+
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    return await callFetch(`${API_ENDPOINT}/apks/findAllApkSiteMp`, requestOptions)
   }
 
   static async getSingleApk(id: any): Promise<IResponseSingleApk> {
@@ -56,7 +66,7 @@ export class PremiumApkApi {
     return await callFetch(`${API_ENDPOINT}/apks/findOneApk/${id}`, requestOptions)
   }
 
-  static async getAllApkSearch(search: string,page:number): Promise<IResponseApkSearch> {
+  static async getAllApkSearch(search: string, page: number): Promise<IResponseApkSearch> {
     console.log("🚀 ~ file: PremiumSourceCodeApi.ts:49 ~ PremiumSourceCodeApi ~ getSingleApk ~ id:", search)
     var requestOptions = {
       method: 'GET',
@@ -66,8 +76,8 @@ export class PremiumApkApi {
     return await callFetch(`${API_ENDPOINT}/apks/findAllApkSearch/?search=${search}&page=${page}`, requestOptions)
   }
 
-  static async getAllCategorizedApk(category: string, page: number, subCat?:string): Promise<IResponseApkCategorized> {
-    console.log('cattuuu', category, page,subCat)
+  static async getAllCategorizedApk(category: string, page: number, subCat?: string): Promise<IResponseApkCategorized> {
+    console.log('cattuuu', category, page, subCat)
     console.log("🚀 ~ file: PremiumSourceCodeApi.ts:49 ~ PremiumSourceCodeApi ~ getSingleApk ~ id:", category)
     var requestOptions = {
       method: 'GET',

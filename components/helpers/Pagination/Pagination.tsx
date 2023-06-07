@@ -93,7 +93,7 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
               <div>
               {currentPage >2 &&
               <div className="flex">
-                 <p onClick={() => { setLPClicked(true); handlePageClick(1) }} className={`w-[32px] text-black cursor-pointer border-[1px] border-[#C0C0C0] flex justify-center items-center h-[32px] hover:bg-[#C0C0C0] rounded-[3px] ${lPclick && ' font-bold'}`}>
+                 <p onClick={() => { setLPClicked(true); handlePageClick(1) }} className={`w-[40px] text-black cursor-pointer border-[1px] border-[#C0C0C0] flex justify-center items-center h-[32px] hover:bg-[#C0C0C0] rounded-[3px] ${lPclick && ' font-bold'}`}>
                   {/* {pageCount} */}
                   1
                 </p>
@@ -121,7 +121,7 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
                         className="cursor-pointer"
                       >
                          <p
-                           className={`w-[32px] flex border-[1px]  border-[#C0C0C0] justify-center items-center h-[32px] ${currentPage === data + 1 ?
+                           className={`w-[40px] flex border-[1px]  border-[#C0C0C0] justify-center items-center h-[32px] ${currentPage === data + 1 ?
                             "text-white rounded-[3px] bg-psclightblack font-bold"
                             : 'hover:bg-[#C0C0C0] text-psclightblack'} ${clicked === ind &&
                             "text-[#525455] font-bold"
@@ -138,7 +138,7 @@ const Pagination: React.FC<Props> = ({pageCount, currentPage}) => {
             {currentPage !== pageCount && pageCount > 2 &&
                 <div className="flex">
                 <p className="text-black">&nbsp;&nbsp;......&nbsp;&nbsp;</p>
-                <p onClick={() => { setLPClickedL(true); handlePageClick(pageCount) }} className={`w-[32px] text-black cursor-pointer border-[1px] border-[#C0C0C0] flex justify-center items-center h-[32px] hover:bg-[#C0C0C0] rounded-[3px] ${lPclickL && 'font-bold'}`}>
+                <p onClick={() => { setLPClickedL(true); handlePageClick(pageCount) }} className={`w-[40px] text-black cursor-pointer border-[1px] border-[#C0C0C0] flex justify-center items-center h-[32px] hover:bg-[#C0C0C0] rounded-[3px] ${lPclickL && 'font-bold'}`}>
                 {pageCount}
                 </p>
                 </div>}

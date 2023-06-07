@@ -14,8 +14,13 @@ export interface IResponseApk extends MyFetchInterface {
   res: {
     apkAllData: Array<ApkData>
     apkAllDataLength: number,
-    apkAll: Array<ApkData>
+    // apkAll: Array<ApkData>
     // catSub:Array<any>
+  }
+}
+export interface IResponseSiteMapApk extends MyFetchInterface {
+  res: {
+    apkAll: Array<ApkData>
   }
 }
 export interface IResponseSingleApk extends MyFetchInterface {

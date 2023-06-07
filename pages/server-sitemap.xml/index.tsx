@@ -1,8 +1,9 @@
 import { getServerSideSitemapLegacy } from "next-sitemap";
 import { PremiumApkApi } from "../../src/API/PremiumApkApi";
+import { Jsondata } from "../../src/utils/Jsondata";
 
 export const getServerSideProps = async (ctx:any) => {
-  const {res,err}= await PremiumApkApi.getAllApk(1)
+  const {res,err}= await PremiumApkApi.getAllApkSiteMap()
   // posts = await posts.json();
   console.log('res', res.apkAll);
   //@ts-ignore
@@ -11,7 +12,12 @@ export const getServerSideProps = async (ctx:any) => {
     lastmod: new Date().toISOString(),
   }));
 
-  const fields = [...newsSitemaps];
+  const newsSitemap9 = Jsondata.promotions.map((item:any) => ({
+    loc: item.link,
+    lastmod: new Date().toISOString(),
+  }));
+
+  const fields = [...newsSitemaps,...newsSitemap9];
 
   return getServerSideSitemapLegacy(ctx, fields);
 };
